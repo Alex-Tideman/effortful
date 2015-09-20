@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+
+@import "materialize/components/color";
+$primary-color: #4A856F !default;
+@import "materialize";
+
+html {
+  font-family: "Avenir Next", "sans-serif";
+  font-weight: 300;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
