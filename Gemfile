@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'materialize-sass'
 gem 'figaro'
 gem 'bcrypt', '~> 3.1.7'
+gem 'what3words'
 # gem 'twilio-ruby'
 # gem 'omniauth-facebook'
 # gem 'facebook'
