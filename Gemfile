@@ -13,9 +13,9 @@ gem 'materialize-sass'
 gem 'figaro'
 gem 'bcrypt', '~> 3.1.7'
 gem 'what3words'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 # gem 'twilio-ruby'
-# gem 'omniauth-facebook'
-# gem 'facebook'
 
 group :development, :test do
   gem 'rspec-rails'

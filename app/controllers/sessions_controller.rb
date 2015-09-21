@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      flash[:notice] = "Welcome back to Flashbulb"
+      flash[:notice] = "Welcome back to Effortful"
       redirect_to dashboard_path
     end
   end
