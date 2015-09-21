@@ -1,8 +1,22 @@
 <footer>
-<div class="footer-copyright">
-  <div class="container">
-    © 2015 Effortful
-    <a class="grey-text text-lighten-4 right" href="#!">How Effortful Works</a>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>How Effortful Works</h4>
+      <p>A Member submits an Effort they would like to fulfill within three possible time periods: 1 day, 1 week or 2 weeks.</p>
+      <p>A Sponsor commits to an Effort and selects a Reward. Once there are seven Sponsors for an Effort, the Effort can begin.</p>
+      <p>A Member carries out the Effort and provides progress if possible.</p>
+      <p>At the completion of an Effort, all Sponsors view progress and results and give approval of distrubtion of Rewards.</p>
+      <p>A Volunteer picks up Rewards from Sponsors and drops off to Member.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">X</a>
+    </div>
   </div>
-</div>
 </footer>
+<script>
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+</script>
