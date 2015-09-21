@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col s12 m4">
+    <div class="card light-blue">
+      <div class="card-content white-text">
+        <span class="card-title">About Me</span>
+        <p>My Name: John Doe</p>
+        <p>My Hobbies: I like reading and nice weather.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m6">
+    <div class="card light-blue">
+      <div class="card-content white-text">
+        <span class="card-title">My Mission</span>
+        <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+      </div>
+      <div id="member-efforts" class="card-action">
+        <%= render partial: 'partials/effort_card' %>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal2" id="modal2-button">Active Efforts</a>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal3" id="modal3-button">Past Efforts</a>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m2">
+    <div class="card light-blue">
+      <div class="card-content white-text">
+        <span class="card-title">My Sponsors</span>
+      </div>
+    </div>
+  </div>
+</div>
+

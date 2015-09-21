@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :members
   resources :volunteers
   resources :sponsors
+  resources :efforts
 end

@@ -16,7 +16,7 @@
 
 
 @import "materialize/components/color";
-$primary-color: #4A856F !default;
+$primary-color: #1976d2 !default;
 @import "materialize";
 
 html {
@@ -30,5 +30,14 @@ body {
 }
 
 .modal.bottom-sheet {
-  max-height: 60%;
+  min-height: 90%;
+  max-height: 90%;
+}
+
+.btn {
+  background-color: #0d47a1;
+}
+
+.btn:hover {
+  background-color: #F58755;
 }

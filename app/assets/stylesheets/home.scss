@@ -1,14 +1,10 @@
-.brand-logo a{
-  margin-left: 20%;
+nav .brand-logo {
+  margin-left: 5%;
 }
 
-#navbar-modal-button {
-  margin-left: 40%;
-  background-color: #F58755;
-}
 
 #home {
-  background-image: image_url('rsz_street1.jpg');
+  //background-image: image_url('rsz_street1.jpg');
   height: 100%;
   padding-top: 200px;
   padding-left: 50px;
@@ -34,3 +30,11 @@
   text-align: center;
 }
 
+#modal1-button {
+  margin-left: 40%;
+  background-color: #F58755;
+}
+
+.modal-close {
+  float:right;
+}
