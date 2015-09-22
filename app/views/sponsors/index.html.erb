@@ -6,7 +6,6 @@
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">Who is an Effortful Sponsor?<i class="material-icons right">more_vert</i></span>
-        <p><%= link_to "Login as a Sponsor", new_member_path %></p>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">A Sponsor is ...<i class="material-icons right">close</i></span>
@@ -15,6 +14,7 @@
     </div>
   </div>
   <div class="col s6">
-    <%= render partial: 'partials/sponsor_form' %>
+    <h4 class="form-title">Become a Sponsor</h4>
+    <%= render partial: 'partials/login_form' %>
   </div>
 </div>
