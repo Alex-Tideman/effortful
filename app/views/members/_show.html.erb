@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col s12 m4">
+    <div class="card light-blue">
+      <div class="card-content white-text">
+        <div class="card-title">
+          <%= image_tag(@user.image) %>
+          <span class="card-title"><%= @user.name %></span>
+          <p><%= @user.role %></p>
+        </div>
+      </div>
+      <div class="card-action">
+        <p class="card-title">My Hobbies: <%= @user.hobby %></p>
+        <p class="card-title">My Location: <%= @user.location %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m6">
+    <div class="card light-blue">
+      <div class="card-content white-text">
+        <span class="card-title">My Mission</span>
+        <p><%= @user.mission %></p>
+      </div>
+      <div id="member-efforts" class="card-action">
+        <%= render partial: 'partials/effort_card' %>
+        <%= link_to "Create Effort", new_effort_path, class: "waves-effect waves-light btn modal-trigger"%>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal2" id="modal2-button">Active Efforts</a>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal3" id="modal3-button">Past Efforts</a>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m2">
+    <div class="card light-blue">
+      <div class="card-content white-text">
+        <span class="card-title">My Sponsors</span>
+      </div>
+    </div>
+  </div>
+</div>

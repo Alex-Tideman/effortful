@@ -1,0 +1,8 @@
+<% if current_user.role == "Member" %>
+    <%= render partial: 'members/show' %>
+<% elsif current_user.role == "Volunteer" %>
+    <%= render partial: 'volunteers/show' %>
+<% elsif current_user.role == "Sponsor" %>
+    <%= render partial: 'sponsors/show' %>
+<% end %>
+
