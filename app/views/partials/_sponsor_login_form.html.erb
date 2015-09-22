@@ -1,0 +1,33 @@
+<div class="row">
+  <%= form_for @user, url: sponsors_path(@user) do |f| %>
+      <div class="row">
+        <div class="input-field col s6">
+          <%= f.label :first_name, "First Name" %>
+          <%= f.text_field :first_name, class: "validates" %>
+        </div>
+        <div class="input-field col s6">
+          <%= f.label :last_name, "Last Name" %>
+          <%= f.text_field :last_name, class: "validates" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.label :email %>
+          <%= f.text_field :email, class: "validates" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.label :password, "Password (min 6 characters)" %>
+          <%= f.password_field :password, class: "validates" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <button class="waves-effect waves-light btn-large" name="action"><%= f.submit "SUBMIT", id: "user-create" %>
+            <i class="material-icons left">send</i>
+          </button>
+        </div>
+      </div>
+  <% end %>
+</div>
