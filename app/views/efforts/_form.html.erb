@@ -1,0 +1,44 @@
+<div class="row">
+  <%= form_for @effort do |f| %>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+          <%= f.label :title, "Name Your Effort" %>
+          <%= f.text_field :title, class: "materialize-textarea" %>
+        </div>
+        <div class="input-field col s3">
+          <p>Select Your Desired Reward:</p>
+          <%= f.select :requested_reward, ['Clothing','Food','Job Resources'], {} %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">mode_edit</i>
+          <%= f.label :description, "What are you going to do?" %>
+          <%= f.text_area :description, class: "materialize-textarea" %>
+        </div>
+        <div class="input-field col s3">
+          <p>Select Your Effort Length:</p>
+          <%= f.select :length, ['1 Day','1 Week'], {} %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <p>Location:</p>
+          <%= render partial: 'map' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <button class="waves-effect waves-light btn-large" name="action"><%= f.submit "SUBMIT", id: "user-create" %>
+            <i class="material-icons left">send</i>
+          </button>
+        </div>
+      </div>
+  <% end %>
+</div>
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>

@@ -1,0 +1,49 @@
+<div id="map-container"><div id="map"></div>
+</div>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 39.7392, lng: -104.9903},
+            zoom: 14,
+            mapTypeId: google.maps.MapTypeId.ROAD
+        });
+
+        var cityCircle = new google.maps.Circle({
+            strokeColor: '#1976d2',
+            strokeOpacity: 0.8,
+            strokeWeight: 4,
+            fillColor: '#F58755',
+            fillOpacity: 0.35,
+            map: map,
+            center: {lat: 39.7392, lng: -104.9903},
+            radius: 200,
+            draggable: true,
+            editable: true
+        });
+
+        var contentString = '<div id="infobox-content">'+
+                '<h6 id="firstHeading" class="firstHeading">Place Your Effort</h6>'+
+                '<div id="bodyContent">'+
+                '<p>Select the area of your effort ' +
+                'and adjust the size of the circle to surround the area. '+
+                'Please try to be as specific as possible.</p>' +
+                '</div>'+
+                '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString,
+            maxWidth: 300
+
+        });
+
+        cityCircle.addListener('click', function() {
+            infowindow.open(map,cityCircle);
+        });
+
+
+    }
+
+
+</script>
