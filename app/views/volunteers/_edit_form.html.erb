@@ -1,31 +1,36 @@
 <div class="row">
   <%= form_for @user, url: profile_path(@user) do |f| %>
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">mode_edit</i>
-          <%= f.label :hobby, "What are your hobbies?" %>
-          <%= f.text_area :hobby, class: "materialize-textarea" %>
+      <div class="input-field col s6">
+        <div class="row">
+          <div id="role" class="input-field col s6">
+            <p>Select Your Role:</p>
+            <%= f.select :role, ['Member','Volunteer','Sponsor'], {} %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">mode_edit</i>
+            <%= f.label :hobby, "What are your hobbies?" %>
+            <%= f.text_area :hobby, class: "materialize-textarea" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">mode_edit</i>
+            <%= f.label :mission, "What is your mission for Effortful?" %>
+            <%= f.text_area :mission, class: "materialize-textarea" %>
+          </div>
+        </div>
+        <div class="row">
+          <div id="submit" class="input-field col s6">
+            <button class="waves-effect waves-light btn-large" name="action"><%= f.submit "SUBMIT", id: "user-create" %>
+              <i class="material-icons left">send</i>
+            </button>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">mode_edit</i>
-          <%= f.label :mission, "What is your mission for Effortful?" %>
-          <%= f.text_area :mission, class: "materialize-textarea" %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s3">
-          <p>Select Your Role:</p>
-          <%= f.select :role, ['Member','Volunteer','Sponsor'], {} %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s4">
-          <button class="waves-effect waves-light btn-large" name="action"><%= f.submit "SUBMIT", id: "user-create" %>
-            <i class="material-icons left">send</i>
-          </button>
-        </div>
+      <div class="input-field col s6">
+        <h6>Transportation Options</h6>
       </div>
   <% end %>
 </div>
@@ -33,4 +38,5 @@
     $(document).ready(function() {
         $('select').material_select();
     });
+
 </script>

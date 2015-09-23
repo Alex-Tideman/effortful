@@ -1,41 +1,40 @@
-<div class="row">
+<div id="effort-form-content" class="row">
   <%= form_for @effort, url: user_efforts_path do |f| %>
-      <div class="row">
-        <div class="input-field col s6">
+      <div class="col s6">
+        <h5 id="set-location">Set Location</h5>
+        <%= render partial: 'map' %>
+      </div>
+      <div class="col s6">
+        <div class="row">
+          <div class="input-field col s12">
           <i class="material-icons prefix">mode_edit</i>
           <%= f.label :title, "Name Your Effort" %>
           <%= f.text_field :title, class: "materialize-textarea" %>
-        </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix">mode_edit</i>
-          <%= f.label :description, "What are you going to do?" %>
-          <%= f.text_area :description, class: "materialize-textarea" %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s6">
-          <p>Location:</p>
-          <%= render partial: 'map' %>
-        </div>
-        <div class="col s6">
-          <div class="row">
-            <div class="input-field col s6">
-              <p>Select Your Desired Reward:</p>
-              <%= f.select :requested_reward, ['Clothing','Food','Job Resources'], {} %>
-            </div>
-            <div class="input-field col s6">
-              <p>Select Your Effort Length:</p>
-              <%= f.select :length, ['1 Day','1 Week'], {} %>
-            </div>
           </div>
-          <div class="row">
-            <div class="input-field col s4">
-              <button class="waves-effect waves-light btn-large" name="action"><%= f.submit "SUBMIT", id: "user-create" %>
-                <i class="material-icons left">send</i>
-              </button>
-            </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">mode_edit</i>
+            <%= f.label :description, "What are you going to do?" %>
+            <%= f.text_area :description, class: "materialize-textarea" %>
           </div>
+        </div>
+        <div class="row">
+              <div class="input-field col s4">
+                <p>Select Your Reward:</p>
+                <%= f.select :requested_reward, ['Clothing','Food','Job Resources'], {} %>
+              </div>
+              <div class="input-field col s4">
+                <p>Select Your Effort Length:</p>
+                <%= f.select :length, ['1 Day','1 Week'], {} %>
+              </div>
+              <div class="input-field col s4">
+                <button class="waves-effect waves-light btn-large" name="action"><%= f.submit "SUBMIT", id: "user-create" %>
+                  <i class="material-icons left">send</i>
+                </button>
+              </div>
           </div>
+        </div>
       </div>
   <% end %>
 </div>

@@ -22,27 +22,6 @@
             editable: true
         });
 
-        var contentString = '<div id="infobox-content">'+
-                '<h6 id="firstHeading" class="firstHeading">Place Your Effort</h6>'+
-                '<div id="bodyContent">'+
-                '<p>Select the area of your effort ' +
-                'and adjust the size of the circle to surround the area. '+
-                'Please try to be as specific as possible.</p>' +
-                '</div>'+
-                '</div>';
-
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString,
-            maxWidth: 300
-
-        });
-
-        cityCircle.addListener('click', function() {
-            infowindow.open(map,cityCircle);
-        });
-
-
     }
-
 
 </script>

@@ -10,7 +10,6 @@
       </div>
       <div class="card-action">
         <p class="card-title">My Hobbies: <%= @user.hobby %></p>
-        <p class="card-title">My Location: <%= @user.location %></p>
       </div>
     </div>
   </div>
@@ -30,6 +29,9 @@
     <div class="card orange">
       <div class="card-content white-text">
         <span class="card-title">My Members</span>
+        <% @user.efforts.uniq.each do |effort| %>
+            <%= image_tag(effort.member.image) %>
+        <% end %>
       </div>
     </div>
   </div>
