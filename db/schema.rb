@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923002323) do
+ActiveRecord::Schema.define(version: 20150923162741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,18 +23,30 @@ ActiveRecord::Schema.define(version: 20150923002323) do
     t.string   "start_date"
     t.string   "length"
     t.string   "requested_reward"
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "volunteer_id"
+    t.string   "sponsors"
   end
 
-  add_index "efforts", ["user_id"], name: "index_efforts_on_user_id", using: :btree
+  add_index "efforts", ["member_id"], name: "index_efforts_on_member_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "user_efforts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "effort_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_efforts", ["effort_id"], name: "index_user_efforts_on_effort_id", using: :btree
+  add_index "user_efforts", ["user_id"], name: "index_user_efforts_on_user_id", using: :btree
 
   create_table "user_roles", force: :cascade do |t|
     t.integer  "user_id"
@@ -65,7 +77,9 @@ ActiveRecord::Schema.define(version: 20150923002323) do
     t.string   "role",            default: "Member"
   end
 
-  add_foreign_key "efforts", "users"
+  add_foreign_key "efforts", "users", column: "member_id"
+  add_foreign_key "user_efforts", "efforts"
+  add_foreign_key "user_efforts", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end

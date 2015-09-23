@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col m6">
+    <div class="card light-blue">
+      <div class="card-content white-text">
+        <span class="card-title">Effort Information</span>
+        <h6>Title: <%= @effort.title %></h6>
+        <h6>Member: <%= @effort.member.name %></h6>
+        <h6>Description: <%= @effort.description %></h6>
+        <h6>Location: </h6>
+        <h6>Length: <%= @effort.length %></h6>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="col m6">
+    <div class="card indigo darken-3 lighten-1">
+      <div class="card-content white-text">
+        <span class="card-title">Sponsors & Volunteer</span>
+        <% if current_sponsor && @effort.sponsors.count < 7 %>
+            <%= button_to "Add Sponsor", user_effort_path, :method => "put", id: "add-sponsor", class: "btn-floating btn-large waves-effect waves-light red" %>
+        <% elsif current_volunteer && @effort.volunteer_id.nil? %>
+            <%= button_to "Add Volunteer", user_effort_path, :method => "put", id: "add-sponsor", class: "btn-floating btn-large waves-effect waves-light blue" %>
+        <% end %>
+        <div class="row">
+          <% if @effort.sponsors.count > 0 %>
+          <% @effort.sponsors.each do |sponsor|  %>
+          <div class="col m2">
+            <%= image_tag(sponsor.image) %>
+          </div>
+            <% end %>
+          <% end %>
+          <div class="col m2">
+             <%= image_tag(@effort.volunteer.image) if @effort.volunteer %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col m6">
+    <div class="card red">
+      <div class="card-content white-text">
+        <span class="card-title">Effort Progress</span>
+        <h6>Start Date: <%= @effort.start_date_readable %></h6>
+        <h6>Time Remaining: <%= @effort.time_remaining %></h6>
+      </div>
+    </div>
+  </div>
+  <div class="col m6">
+    <div class="card teal">
+      <div class="card-content white-text">
+        <span class="card-title">Rewards</span>
+        <h6>Type: <%= @effort.member.name %> requested <%= @effort.requested_reward %></h6>
+        <h6>Frequency: Once a day</h6>
+        <h6>Name</h6>
+        <h6>Name</h6>
+      </div>
+    </div>
+  </div>
+</div>
+

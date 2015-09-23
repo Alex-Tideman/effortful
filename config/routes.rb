@@ -8,11 +8,14 @@ Rails.application.routes.draw do
   get "/profile",    to: "users#show"
   patch "/profile",    to: "users#update"
   get "/profile/edit", to: "users#edit"
-  get "/my-efforts", to: "users#efforts"
+
+  namespace :user, path: ':user', as: :user do
+    resources :efforts, except: [:destroy]
+  end
 
 
   resources :members, only: [:index]
   resources :volunteers, only: [:index]
   resources :sponsors, only: [:index]
-  resources :efforts
+  resources :efforts, only: [:index]
 end
