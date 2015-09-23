@@ -1,0 +1,69 @@
+<div class="row">
+  <%= form_for @user, url: profile_path(@user) do |f| %>
+      <div class="input-field col s6">
+        <div class="row">
+          <div id="role" class="input-field col s6">
+            <p>Select Your Role:</p>
+            <%= f.select :role, ['Member','Volunteer','Sponsor'], {} %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">mode_edit</i>
+            <%= f.label :hobby, "What are your hobbies?" %>
+            <%= f.text_area :hobby, class: "materialize-textarea" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">mode_edit</i>
+            <%= f.label :mission, "What is your mission for Effortful?" %>
+            <%= f.text_area :mission, class: "materialize-textarea" %>
+          </div>
+        </div>
+        <div class="row">
+          <div id="submit" class="input-field col s6">
+            <button class="waves-effect waves-light btn-large" name="action"><%= f.submit "SUBMIT", id: "user-create" %>
+              <i class="material-icons left">send</i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="input-field col s6">
+        <h6>Pick Up Location</h6>
+        <% if @user.location.nil? %>
+        <iframe id="what3words" src="https://map.what3words.com/daring.chips.zebra">
+          <p>Map did not render!</p>
+        </iframe>
+            <% else %>
+            <iframe id="what3words" src="https://map.what3words.com/<%= @user.location %>">
+              <p>Map did not render!</p>
+            </iframe>
+      <% end %>
+        <%= f.text_field :location, placeholder: "Enter Your 3 Word Location", class: "validates" %>
+      </div>
+  <% end %>
+</div>
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+
+
+    $('button').on('click', function (e) {
+        var t = $('span');
+        t.text('Loading...');
+
+        navigator.geolocation.getCurrentPosition(function (location) {
+            data = {
+                'key':		'QI4PBUVB',
+                'position':	location.coords.latitude + ',' + location.coords.longitude
+            };
+
+            $.post('http://api.what3words.com/position', data, function(response) {
+                t.text(response.words.join('.'));
+            });
+        });
+    });
+
+</script>
