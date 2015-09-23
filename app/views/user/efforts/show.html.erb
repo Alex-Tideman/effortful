@@ -2,7 +2,10 @@
   <div class="col m6">
     <div class="card light-blue">
       <div class="card-content white-text">
+        <div class="card-title white-text">
+        <%= image_tag(@effort.member.image) %>
         <span class="card-title">Effort Information</span>
+      </div>
         <h6>Title: <%= @effort.title %></h6>
         <h6>Member: <%= @effort.member.name %></h6>
         <h6>Description: <%= @effort.description %></h6>
@@ -25,12 +28,12 @@
         <div class="row">
           <% if @effort.sponsors.count > 0 %>
           <% @effort.sponsors.each do |sponsor|  %>
-          <div class="col m2">
+          <div id="sponsor" class="col m3 s-v">
             <%= image_tag(sponsor.image) %>
           </div>
             <% end %>
           <% end %>
-          <div class="col m2">
+          <div id="volunteer" class="col m3 s-v">
              <%= image_tag(@effort.volunteer.image) if @effort.volunteer %>
           </div>
         </div>
@@ -43,8 +46,8 @@
     <div class="card red">
       <div class="card-content white-text">
         <span class="card-title">Effort Progress</span>
-        <h6>Start Date: <%= @effort.start_date_readable %></h6>
-        <h6>Time Remaining: <%= @effort.time_remaining %></h6>
+        <h6>Start Date: <%= @effort.start_date %></h6>
+        <h6>Time Remaining: <%#= @effort.time_remaining %></h6>
       </div>
     </div>
   </div>

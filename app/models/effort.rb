@@ -10,7 +10,7 @@ class Effort < ActiveRecord::Base
   end
 
   def volunteer
-    User.find(volunteer_id)
+    User.find(volunteer_id) if !volunteer_id.nil?
   end
 
   def sponsors
@@ -19,16 +19,20 @@ class Effort < ActiveRecord::Base
     end.compact
   end
 
+  def active
+    true if sponsors.count == 7 && volunteer
+  end
+
+  def past
+    true if Time.now > end_date
+  end
+
   def start_date
-    if sponsors.count == 7 && volunteer
-      Time.now
+    if active
+      updated_at.strftime('%a, %d %b %Y')
     else
       "TBD"
     end
-  end
-
-  def start_date_readable
-    start_date.strftime('%a, %d %b %Y')
   end
 
   def end_date
@@ -43,7 +47,7 @@ class Effort < ActiveRecord::Base
     if start_date == "TBD"
       "Effort has yet to begin."
     else
-      end_date - Time.now
+      end_date - Time.now.strftime('%a, %d %b %Y')
     end
   end
 

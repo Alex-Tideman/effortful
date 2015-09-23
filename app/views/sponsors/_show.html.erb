@@ -32,6 +32,9 @@
     <div class="card red">
       <div class="card-content white-text">
         <span class="card-title">My Members</span>
+        <% @user.efforts.uniq.each do |effort| %>
+                <%= image_tag(effort.member.image) %>
+        <% end %>
       </div>
     </div>
   </div>

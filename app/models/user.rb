@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     user
   end
 
+  def members
+
+  end
+
   private
 
 end

@@ -32,6 +32,11 @@
     <div class="card light-blue">
       <div class="card-content white-text">
         <span class="card-title">My Sponsors</span>
+        <% @user.efforts.each do |effort| %>
+            <% effort.sponsors.each do |sponsor| %>
+              <%= image_tag(sponsor.image) %>
+            <% end %>
+        <% end %>
       </div>
     </div>
   </div>
