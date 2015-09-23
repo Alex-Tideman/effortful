@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :efforts
 
   validates :first_name, :last_name, :email, presence: true
 

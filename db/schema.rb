@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922222236) do
+ActiveRecord::Schema.define(version: 20150923002323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "efforts", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "location"
+    t.string   "start_date"
+    t.string   "length"
+    t.string   "requested_reward"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "efforts", ["user_id"], name: "index_efforts_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -51,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150922222236) do
     t.string   "role",            default: "Member"
   end
 
+  add_foreign_key "efforts", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end

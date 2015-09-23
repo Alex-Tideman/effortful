@@ -7,9 +7,11 @@ class EffortsController < ApplicationController
   end
 
   def new
+    @effort = Effort.new
   end
 
   def create
+    @effort = Effort.new
   end
 
 end

@@ -15,6 +15,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'what3words'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'gmaps4rails'
+gem 'underscore-rails'
 # gem 'twilio-ruby'
 
 group :development, :test do
