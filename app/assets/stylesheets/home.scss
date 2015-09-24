@@ -4,14 +4,16 @@ nav .brand-logo {
 
 
 #home {
-  //background-image: ;
+  background: url(image-path("thank-you.jpg")) left center;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
   height: 100%;
   padding-top: 200px;
   padding-left: 50px;
   padding-bottom: 100px;
 }
-
-
 
 #home .row {
   margin-bottom:0;
@@ -28,7 +30,7 @@ nav .brand-logo {
   background: rgba(0,0,0,.34);
   font-size: 32px;
   font-weight: 700;
-  color: #7F0000;
+  color: white;
   text-align: center;
 }
 
