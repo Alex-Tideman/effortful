@@ -21,9 +21,9 @@
       <div class="card-content white-text">
         <span class="card-title">Sponsors & Volunteer</span>
         <% if current_sponsor && @effort.sponsors.count < 7 %>
-            <%= button_to "Add Sponsor", user_effort_path, :method => "put", id: "add-sponsor", class: "btn-floating btn-large waves-effect waves-light red" %>
+            <%= link_to "Add Sponsor", user_effort_path, :method => "put", id: "add-sponsor", class: "btn-floating btn-large waves-effect waves-light red" %>
         <% elsif current_volunteer && @effort.volunteer_id.nil? %>
-            <%= button_to "Add Volunteer", user_effort_path, :method => "put", id: "add-sponsor", class: "btn-floating btn-large waves-effect waves-light blue" %>
+            <%= link_to "Add Volunteer", user_effort_path, :method => "put", id: "add-sponsor", class: "btn-floating btn-large waves-effect waves-light red" %>
         <% end %>
         <div class="row">
           <% if @effort.sponsors.count > 0 %>
