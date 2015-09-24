@@ -11,28 +11,50 @@ nav .brand-logo {
   padding-bottom: 100px;
 }
 
+
+
 #home .row {
   margin-bottom:0;
 }
 
 #home .row:hover {
-  background-color: #F58755;
-  opacity: .3;
+  background-color: #7F0000;
+  opacity: .5;
 }
 
 .home-box {
   height: 80px;
   width: 300px;
-  background: rgba(0,0,0,.74);
+  background: rgba(0,0,0,.34);
   font-size: 32px;
   font-weight: 700;
-  color: #F58755;
+  color: #7F0000;
   text-align: center;
 }
 
-#modal1-button {
+#nav-modal-button {
   margin-left: 40%;
-  background-color: #F58755;
+  background-color: #ffffff;
+}
+
+#modal1-button {
+  color: black;
+  background-color: #9ccc65;
+}
+
+#modal1-button:hover {
+  color: white;
+  background-color: #FF4C4C;
+}
+
+#modal2-button {
+  color: black;
+  background-color: #ffffff;
+}
+
+#modal2-button:hover {
+  color: white;
+  background-color: #FF4C4C;
 }
 
 .modal-close {

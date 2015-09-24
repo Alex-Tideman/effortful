@@ -6,19 +6,67 @@
   margin-left: 15%;
 }
 
-.card-title img{
-  width: 50px;
-  float: right;
-  border-radius: 50%;
+.profile-card {
+  height: 200px;
 }
 
-.card-content img{
-  width: 50px;
-  float: right;
-  border-radius: 50%;
+#profile-stripe1 {
+  position:absolute;
+  height: 650px;
+  z-index: 1002;
+  background: #e02032;
 }
 
+#profile-stripe2 {
+  position:absolute;
+  height: 650px;
+  z-index: 1000;
+  margin-left:2.5%;
+}
+
+#profile-stripe3 {
+  position:absolute;
+  height: 650px;
+  z-index: 1002;
+  margin-left:5%;
+  background: #e02032;
+}
+
+#hobbies {
+  z-index:1001;
+}
+
+#sponsors {
+  z-index:1005;
+}
+
+#members {
+  z-index:1005;
+}
+
+#volunteers {
+  z-index:1005;
+}
+
+#member-title img{
+  float: right;
+}
+
+.card img{
+  width: 50px;
+  border-radius: 50%;
+}
+//
+//.card-content img{
+//  margin-top: 15px;
+//}
 #what3words {
   width: 100%;
   height: 400px;
+}
+
+.chip {
+  background-color: #fff;
+  position: absolute;
+  margin-left: -10px;
 }

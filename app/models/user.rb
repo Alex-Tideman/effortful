@@ -21,6 +21,32 @@ class User < ActiveRecord::Base
     user
   end
 
+  def sponsor_count
+    sponsors_with_count = Hash.new{ |k,v| k[v] = 0 }
+    self.efforts.each do |effort|
+      effort.sponsors.each do |sponsor|
+        sponsors_with_count[sponsor] += 1
+      end
+    end
+    sponsors_with_count
+  end
+
+  def volunteer_count
+    volunteers_with_count = Hash.new{ |k,v| k[v] = 0 }
+    self.efforts.uniq.each do |effort|
+        volunteers_with_count[effort.volunteer] += 1
+      end
+    volunteers_with_count
+  end
+
+  def member_count
+    members_with_count = Hash.new{ |k,v| k[v] = 0 }
+    self.efforts.uniq.each do |effort|
+      members_with_count[effort.member] += 1
+    end
+    members_with_count
+  end
+
   private
 
 end
