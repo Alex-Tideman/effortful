@@ -30,8 +30,11 @@ nav .brand-logo {
   background: rgba(0,0,0,.34);
   font-size: 32px;
   font-weight: 700;
-  color: white;
   text-align: center;
+}
+
+.home-box a, a:visited, a:link {
+  color: white;
 }
 
 #nav-modal-button {

@@ -5,10 +5,6 @@ class Effort < ActiveRecord::Base
 
   validates :title, :description, :requested_reward, :length, presence: true
 
-  def initialize
-    @effort_time = TimeCalculator.new(self)
-  end
-
   def member
     User.find(member_id)
   end
