@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col m12">
+    <div class="row">
+      <div class="col m3">
+        <div class="card green">
+          <div class="card-content white-text">
+            <div class="card-title white-text">
+              <span class="card-title">Voting Results</span>
+            </div>
+            <div id="voting-results">
+            <h6>Yes: <span id="yes-result"><%= @effort.yes_vote %></span></h6>
+            <h6>No: <span id="no-result"><%= @effort.no_vote %></span></h6>
+              <h5>Result: <%= @effort.result %></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% @effort.sponsors.shuffle.each do |sponsor| %>
+          <div class="col m3">
+            <div class="card light-blue">
+              <div class="card-content white-text">
+                <div class="card-title white-text">
+                  <%= image_tag(sponsor.image) %>
+                  <span class="card-title"><%= sponsor.name %></span>
+                </div>
+                <p>Time Remaining to Vote: <%= @effort.vote_remaining %></p>
+                <% if sponsor == current_user %>
+                    <div class="vote-buttons">
+                      <button id="yes-vote" class="btn-floating btn-large waves-effect waves-light green">YES</button>
+                      <button id="no-vote" class="btn-floating btn-large waves-effect waves-light red">NO</button>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function(){
+    addYesVote()
+    addNoVote()
+  })
+
+
+  function addYesVote() {
+    $("#yes-vote").on("click", function(){
+      var results = $('#voting-results');
+      var counter = parseInt($("#yes-result").val());
+
+    var effortParams = {
+      effort: {
+        yes_vote: counter++
+      }
+    }
+
+    $.ajax({
+      type:    "PUT",
+      url:     "/user/efforts",
+      data:    effortParams,
+      success: function(vote) {
+
+      }
+    })
+    })
+  }
+
+  function addNoVote() {
+    $("#no-vote").on("click", function(){
+      var results = $('#voting-results');
+      var counter = parseInt(results.find('#no-result').text() );
+
+      increaseCount(results);
+
+      function increaseCount (results) {
+        counter++;
+        results.find('#no-result').text(counter);
+      }
+
+    })
+  }
+
+
+</script>

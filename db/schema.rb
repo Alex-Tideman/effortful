@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923162741) do
+ActiveRecord::Schema.define(version: 20150924165324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,10 +24,12 @@ ActiveRecord::Schema.define(version: 20150923162741) do
     t.string   "length"
     t.string   "requested_reward"
     t.integer  "member_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "volunteer_id"
     t.string   "sponsors"
+    t.integer  "yes_vote",         default: 0
+    t.integer  "no_vote",          default: 0
   end
 
   add_index "efforts", ["member_id"], name: "index_efforts_on_member_id", using: :btree

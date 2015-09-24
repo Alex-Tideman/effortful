@@ -42,7 +42,7 @@ class User::EffortsController < ApplicationController
   private
 
   def effort_params
-    params.require(:effort).permit(:title,:description,:requested_reward,:length,:location)
+    params.require(:effort).permit(:title,:description,:requested_reward,:length,:location, :yes_vote, :no_vote)
   end
 
 end

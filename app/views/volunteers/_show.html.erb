@@ -51,7 +51,7 @@
     </div>
   </div>
   <div class="col s12 m1">
-    <div id="profile-stripe2" class="card white">
+    <div id="profile-stripe2" class="card">
       <div class="card-content white-text">
       </div>
     </div>
@@ -86,7 +86,7 @@
 <div class="col s12">
   <div id="members" class="card light-blue darken-2">
     <div class="card-content white-text">
-      <span class="card-title">My Members:</span><br>
+      <span class="card-title">My Members:</span>
       <% @user.member_count.each do |member_pair| %>
           <%= image_tag(member_pair.first.image) %>
           <div class="chip"><%= member_pair.last %></div>
@@ -97,7 +97,7 @@
 <div class="col s12">
   <div id="volunteers" class="card light-blue darken-2">
     <div class="card-content white-text">
-      <span class="card-title">My Sponsors:</span><br>
+      <span class="card-title">My Sponsors:</span>
       <% @user.sponsor_count.each do |sponsor_pair| %>
           <%= image_tag(sponsor_pair.first.image) %>
           <div class="chip"><%= sponsor_pair.last %></div>

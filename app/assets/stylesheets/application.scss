@@ -50,16 +50,19 @@ body {
 }
 
 .btn-large:hover {
-  color: white;
+  color: black;
   background-color: #FF4C4C;
 }
 
 
 .dropdown-content {
   z-index: 1050;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
   color: black;
 }
 
-.dropdown-content a,a:visited,a:link{
-  color: black;
+.dropdown-content li > a:hover, .dropdown-content li > span:hover {
+  background-color: #9ccc65;
 }
