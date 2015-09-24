@@ -10,9 +10,10 @@ Rails.application.routes.draw do
   get "/profile/edit", to: "users#edit"
 
   namespace :user, path: ':user', as: :user do
-    resources :efforts, except: [:destroy]
-  end
+    resources :efforts, except: [:destroy] do
 
+    end
+  end
 
   resources :members, only: [:index]
   resources :volunteers, only: [:index]

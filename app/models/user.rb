@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
     members_with_count
   end
 
+  def w3w_location
+    location.split('.')
+  end
+
   private
 
 end

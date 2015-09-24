@@ -48,8 +48,9 @@
 </div>
 <div id="modal4" class="modal bottom-sheet">
   <div class="modal-content">
-    <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">X</a>
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">X</a>
     <br>
+    <div id="map"></div>
     <div class="row">
       <% @user.efforts.each do |effort| %>
           <% if @user == effort.volunteer %>
@@ -57,14 +58,9 @@
               <div class="card darken-1">
                 <div class="card-content">
                   <span class="card-title"><%= effort.title %></span>
-                  <p>My Location: <%= what3words.words_to_position [current_user.location] %>
-                  <p>Sponsor Location: <%= what3words.words_to_position [effort.member.location] %>
-                  <p>Member Location: <%= what3words.words_to_position [effort.sponsors.first.location] %>
-                  <p><%= effort.description %></p>
-                </div>
-                <div class="card-action">
-                  <a href="#">View Effort</a>
-                  <a href="#">Days Remaining</a>
+                  <p id="my-location"><%= what3words.words_to_position current_user.w3w_location %>
+                  <p id="member-location"><%= what3words.words_to_position effort.member.w3w_location %>
+                  <p id="sponsor-location"><%= what3words.words_to_position effort.sponsors.first.w3w_location %>
                 </div>
               </div>
             </div>

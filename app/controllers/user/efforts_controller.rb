@@ -5,6 +5,11 @@ class User::EffortsController < ApplicationController
 
   def show
     @effort = Effort.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new

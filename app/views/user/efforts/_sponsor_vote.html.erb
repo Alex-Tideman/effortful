@@ -47,23 +47,23 @@
   function addYesVote() {
     $("#yes-vote").on("click", function(){
       var results = $('#voting-results');
-      var counter = parseInt($("#yes-result").val());
+      var counter = parseInt(results.find('#yes-result').text() );
 
-    var effortParams = {
-      effort: {
-        yes_vote: counter++
-      }
-    }
+       var url = '/user/efforts/show'
 
-    $.ajax({
-      type:    "PUT",
-      url:     "/user/efforts",
-      data:    effortParams,
-      success: function(vote) {
-
-      }
-    })
-    })
+        $.ajax({
+          type: 'PUT',
+          url: url,
+          data: { "yes_vote": "1" }
+          error: function(data){
+            alert('Error occurred while updating the record.');
+          },
+          success: function(data) {
+            $("#yes-result").append(data)
+            alert('Record updated successfully.');
+          }});
+        return false;
+      })
   }
 
   function addNoVote() {
