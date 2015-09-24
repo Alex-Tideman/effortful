@@ -31,15 +31,9 @@
       </div>
       <div class="input-field col s6">
         <h6>Pick Up Location</h6>
-        <% if @user.location.nil? %>
-        <iframe id="what3words" src="https://map.what3words.com/daring.chips.zebra">
-          <p>Map did not render!</p>
-        </iframe>
-            <% else %>
             <iframe id="what3words" src="https://map.what3words.com/<%= @user.location %>">
               <p>Map did not render!</p>
             </iframe>
-      <% end %>
         <%= f.text_field :location, placeholder: "Enter Your 3 Word Location", class: "validates" %>
       </div>
   <% end %>

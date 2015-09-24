@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924165324) do
+ActiveRecord::Schema.define(version: 20150924174955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,15 +67,15 @@ ActiveRecord::Schema.define(version: 20150924165324) do
     t.string   "uid"
     t.string   "provider"
     t.string   "token"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.string   "gender"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "password_digest"
     t.string   "hobby"
     t.string   "mission"
-    t.string   "location"
+    t.string   "location",        default: "sound.misty.loads"
     t.string   "role",            default: "Member"
   end
 

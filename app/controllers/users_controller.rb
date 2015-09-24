@@ -3,9 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     sponsor_count = @user.sponsor_count
-    end
-
-
+  end
 
   def edit
     @user = current_user

@@ -22,6 +22,59 @@
     </div>
   </div>
 </div>
+<div id="modal3" class="modal bottom-sheet">
+  <div class="modal-content">
+    <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">X</a>
+    <br>
+    <div class="row">
+      <% @user.efforts.each do |effort| %>
+          <div class="col s12 m6">
+            <div class="card darken-1">
+              <div class="card-content">
+                <span class="card-title"><%= effort.title %></span>
+                <p><%= effort.description %></p>
+              </div>
+              <div class="card-action">
+                <a href="#">View Effort</a>
+                <a href="#">Days Remaining</a>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+</div>
+<div id="modal4" class="modal bottom-sheet">
+  <div class="modal-content">
+    <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">X</a>
+    <br>
+    <div class="row">
+      <% @user.efforts.each do |effort| %>
+          <% if @user == effort.volunteer %>
+            <div class="col s12 m6">
+              <div class="card darken-1">
+                <div class="card-content">
+                  <span class="card-title"><%= effort.title %></span>
+                  <p>My Location: <%= what3words.words_to_position [current_user.location] %>
+                  <p>Sponsor Location: <%= what3words.words_to_position [effort.member.location] %>
+                  <p>Member Location: <%= what3words.words_to_position [effort.sponsors.first.location] %>
+                  <p><%= effort.description %></p>
+                </div>
+                <div class="card-action">
+                  <a href="#">View Effort</a>
+                  <a href="#">Days Remaining</a>
+                </div>
+              </div>
+            </div>
+          <% end %>
+    <% end %>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+</div>
 <script>
   $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
