@@ -88,22 +88,22 @@
   <div id="sponsors" class="card light-blue">
     <div class="card-content white-text">
       <span class="card-title">My Sponsors:</span>
-          <% @user.sponsor_count.each do |sponsor_pair| %>
-                  <%= image_tag(sponsor_pair.first.image) %>
-                  <div class="chip"><%= sponsor_pair.last %></div>
-              <% end %>
-          </div>
-          </div>
-          </div>
-          <div class="col s12">
-            <div id="volunteers" class="card light-blue">
-              <div class="card-content white-text">
-                <span class="card-title">My Volunteers:</span>
-                    <% @user.volunteer_count.each do |volunteer_pair| %>
-                        <%= image_tag(volunteer_pair.first.image) %>
-                        <div class="chip"><%= volunteer_pair.last %></div>
-                    <% end %>
-              </div>
-            </div>
-          </div>
-          </div>
+      <% @user.sponsor_count.each do |sponsor_pair| %>
+          <%= image_tag(sponsor_pair.first.image) %>
+          <div class="chip"><%= sponsor_pair.last %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="col s12">
+  <div id="volunteers" class="card light-blue">
+    <div class="card-content white-text">
+      <span class="card-title">My Volunteers:</span>
+      <% @user.volunteer_count.each do |volunteer_pair| %>
+          <%= image_tag(volunteer_pair.first.image) %>
+          <div class="chip"><%= volunteer_pair.last %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

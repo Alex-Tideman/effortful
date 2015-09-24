@@ -2,6 +2,14 @@
   margin-top: 3%;
 }
 
+#member-index-pic {
+  background: url(image-path("hugging.jpg")) left center;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
 #member-efforts {
   margin-left: 15%;
 }
