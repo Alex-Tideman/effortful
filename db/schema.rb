@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924174955) do
+ActiveRecord::Schema.define(version: 20150925203805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,10 @@ ActiveRecord::Schema.define(version: 20150924174955) do
     t.string   "length"
     t.string   "requested_reward"
     t.integer  "member_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "volunteer_id"
     t.string   "sponsors"
-    t.integer  "yes_vote",         default: 0
-    t.integer  "no_vote",          default: 0
   end
 
   add_index "efforts", ["member_id"], name: "index_efforts_on_member_id", using: :btree
@@ -79,9 +77,23 @@ ActiveRecord::Schema.define(version: 20150924174955) do
     t.string   "role",            default: "Member"
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "yes",        default: 0
+    t.integer  "no",         default: 0
+    t.integer  "user_id"
+    t.integer  "effort_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "votes", ["effort_id"], name: "index_votes_on_effort_id", using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
+
   add_foreign_key "efforts", "users", column: "member_id"
   add_foreign_key "user_efforts", "efforts"
   add_foreign_key "user_efforts", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
+  add_foreign_key "votes", "efforts"
+  add_foreign_key "votes", "users"
 end

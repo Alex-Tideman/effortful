@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   patch "/profile",    to: "users#update"
   get "/profile/edit", to: "users#edit"
 
+  resources :votes, only: [:update], defaults: { format: :json }
+
   namespace :user, path: ':user', as: :user do
     resources :efforts, except: [:destroy] do
 

@@ -2,7 +2,7 @@
   <%= form_for @effort, url: user_efforts_path do |f| %>
       <div class="col s6">
         <h5 id="set-location">Set Location</h5>
-        <%= render partial: 'map' %>
+        <div id="map-container"><div id="map"></div></div>
       </div>
       <div class="col s6">
         <div class="row">

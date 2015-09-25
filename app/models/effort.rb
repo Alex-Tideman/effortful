@@ -2,6 +2,7 @@ class Effort < ActiveRecord::Base
   attr_reader :effort_time, :day
   has_many :user_efforts
   has_many :users, through: :user_efforts
+  has_one :vote
 
   validates :title, :description, :requested_reward, :length, presence: true
 

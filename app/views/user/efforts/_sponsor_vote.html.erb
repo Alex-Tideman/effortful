@@ -8,9 +8,13 @@
               <span class="card-title">Voting Results</span>
             </div>
             <div id="voting-results">
-            <h6>Yes: <span id="yes-result"><%= @effort.yes_vote %></span></h6>
-            <h6>No: <span id="no-result"><%= @effort.no_vote %></span></h6>
-              <h5>Result: <%= @effort.result %></h5>
+              <h6>Yes: <span id="yes-result"><%= @effort.vote.yes %></span></h6>
+              <h6>No: <span id="no-result"><%= @effort.vote.no %></span></h6>
+              <% if @effort.vote.yes >= @effort.vote.yes %>
+                  <h5>Result: Success!</h5>
+              <% else %>
+                  <h5>Result: Success!</h5>
+              <% end %>
             </div>
           </div>
         </div>
@@ -26,8 +30,8 @@
                 <p>Time Remaining to Vote: <%= @effort.vote_remaining %></p>
                 <% if sponsor == current_user %>
                     <div class="vote-buttons">
-                      <button id="yes-vote" class="btn-floating btn-large waves-effect waves-light green">YES</button>
-                      <button id="no-vote" class="btn-floating btn-large waves-effect waves-light red">NO</button>
+                      <button id="yes-vote" class="btn-floating btn-large waves-effect waves-light green" data-id=<%= @effort.vote.id%> >YES</button>
+                      <button id="no-vote" class="btn-floating btn-large waves-effect waves-light red" data-id=<%= @effort.vote.id %>>NO</button>
                     </div>
                 <% end %>
               </div>
@@ -39,47 +43,32 @@
 </div>
 <script>
   $(document).ready(function(){
-    addYesVote()
-    addNoVote()
-  })
+    $('#yes-vote').on('click', function(){
+      var vote_params = { vote: { id: $(this).attr("data-id"), type: "yes" } }
 
-
-  function addYesVote() {
-    $("#yes-vote").on("click", function(){
-      var results = $('#voting-results');
-      var counter = parseInt(results.find('#yes-result').text() );
-
-       var url = '/user/efforts/show'
-
-        $.ajax({
-          type: 'PUT',
-          url: url,
-          data: { "yes_vote": "1" }
-          error: function(data){
-            alert('Error occurred while updating the record.');
-          },
-          success: function(data) {
-            $("#yes-result").append(data)
-            alert('Record updated successfully.');
-          }});
-        return false;
+      $.ajax({
+        type:    "PUT",
+        url:     "/votes/" + $(this).attr("data-id"),
+        data:    vote_params,
+        success: function(){
+          $("html").load("#voting-results");
+          $("#vote-buttons").remove();
+        }
       })
-  }
-
-  function addNoVote() {
-    $("#no-vote").on("click", function(){
-      var results = $('#voting-results');
-      var counter = parseInt(results.find('#no-result').text() );
-
-      increaseCount(results);
-
-      function increaseCount (results) {
-        counter++;
-        results.find('#no-result').text(counter);
-      }
-
     })
-  }
 
+    $('#no-vote').on('click', function(){
+      var vote_params = { vote: { id: $(this).attr("data-id"), type: "no" } }
 
+      $.ajax({
+        type:    "PUT",
+        url:     "/votes/" + $(this).attr("data-id"),
+        data:    vote_params,
+        success: function(){
+          $("html").load("#voting-results" )
+          $("#vote-buttons").remove();
+        }
+      })
+    })
+  })
 </script>

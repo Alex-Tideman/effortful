@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :user_efforts
   has_many :efforts, through: :user_efforts
+  has_many :votes
 
   validates :first_name, :last_name, :email, presence: true
 

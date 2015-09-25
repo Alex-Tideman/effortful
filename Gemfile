@@ -17,6 +17,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'responders'
 # gem 'twilio-ruby'
 
 group :development, :test do
