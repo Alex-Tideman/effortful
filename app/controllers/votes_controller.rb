@@ -12,7 +12,7 @@ class VotesController < ApplicationController
       respond_with vote.update(no: new_no_count)
     end
 
-    end
+  end
 
   private
 
