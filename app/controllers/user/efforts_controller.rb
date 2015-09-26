@@ -15,7 +15,7 @@ class User::EffortsController < ApplicationController
     @effort = Effort.new(effort_params)
     @effort.update(member_id: current_user.id)
     if @effort.save
-      @effort.votes.create
+      @effort.vote = Vote.new
       current_user.efforts << @effort
       flash[:success] = "#{@effort.title} has been created!"
       redirect_to user_effort_path(id: @effort.id, user: current_user)

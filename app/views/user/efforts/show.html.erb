@@ -10,6 +10,7 @@
         <h6>Member: <%= @effort.member.name %></h6>
         <h6>Description: <%= @effort.description %></h6>
         <h6>Length: <%= @effort.length %></h6>
+        <div id="show-map-container"><div id="show-map"></div></div>
         <br>
         <br>
       </div>
@@ -35,27 +36,13 @@
           <div id="volunteer" class="col m3 s-v">
              <%= image_tag(@effort.volunteer.image) if @effort.volunteer %>
           </div>
+          <span class="card-title">Effort Progress</span>
+          <h6>Start Date: <%= @effort.start_date %></h6>
+          <h6>Time Remaining: <%= @effort.time_remaining %></h6>
+          <span class="card-title">Rewards</span>
+          <h6>Type: <%= @effort.member.name %> requested <%= @effort.requested_reward %></h6>
+          <h6>Frequency: Once a day</h6>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="effort-show row">
-  <div class="col m6">
-    <div class="card red">
-      <div class="card-content white-text">
-        <span class="card-title">Effort Progress</span>
-        <h6>Start Date: <%= @effort.start_date %></h6>
-        <h6>Time Remaining: <%= @effort.time_remaining %></h6>
-      </div>
-    </div>
-  </div>
-  <div class="col m6">
-    <div class="card teal">
-      <div class="card-content white-text">
-        <span class="card-title">Rewards</span>
-        <h6>Type: <%= @effort.member.name %> requested <%= @effort.requested_reward %></h6>
-        <h6>Frequency: Once a day</h6>
       </div>
     </div>
   </div>
