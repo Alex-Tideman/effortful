@@ -29,7 +29,7 @@
                 <%= f.select :length, ['1 Day','1 Week'], {} %>
               </div>
               <div class="input-field col s4">
-                <button class="waves-effect waves-light btn-large" name="action"><%= f.submit "SUBMIT", id: "user-create" %>
+                <button id="effort-submit" class="waves-effect waves-light btn-large" name="action" data-id= <%= @effort.id%> ><%= f.submit "SUBMIT", id: "effort-create" %>
                   <i class="material-icons left">send</i>
                 </button>
               </div>
@@ -38,8 +38,9 @@
       </div>
   <% end %>
 </div>
-<script>
-    $(document).ready(function() {
-        $('select').material_select();
-    });
-</script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
+  <script>
+      $(document).ready(function() {
+          $('select').material_select();
+      });
+  </script>

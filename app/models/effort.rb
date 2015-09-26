@@ -72,10 +72,14 @@ class Effort < ActiveRecord::Base
     end
   end
 
-  def day
+  def week
     if active
-      [end_date + 1.days, end_date + 2.days, end_date + 3.days,end_date + 4.days,end_date + 5.days,end_date + 6.days,end_date + 7.days].shuffle.pop
+      [end_date + 1.days, end_date + 2.days, end_date + 3.days,end_date + 4.days,end_date + 5.days,end_date + 6.days,end_date + 7.days]
     end
+  end
+
+  def random_sponsor
+    sponsors.shuffle.pop
   end
 
   def result

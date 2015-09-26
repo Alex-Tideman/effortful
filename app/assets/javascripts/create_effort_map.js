@@ -1,7 +1,10 @@
-
 var rectangle;
 var map;
 var infoWindow;
+var ne_lat
+var ne_lng
+var sw_lat
+var sw_lng
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -18,7 +21,7 @@ function initMap() {
 
     // Define the rectangle and set its editable property to true.
     rectangle = new google.maps.Rectangle({
-strokeColor: '#7F0000',
+    strokeColor: '#7F0000',
     strokeOpacity: 0.8,
     strokeWeight: 4,
     fillColor: '#e02032',
@@ -44,20 +47,32 @@ function showNewRect(event) {
     var ne = rectangle.getBounds().getNorthEast();
     var sw = rectangle.getBounds().getSouthWest();
 
-    var ne_lat = ne.lat()
-    var ne_lng = ne.lng()
-    var sw_lat = sw.lat()
-    var sw_lng = sw.lng()
+    ne_lat = ne.lat()
+    ne_lng = ne.lng()
+    sw_lat = sw.lat()
+    sw_lng = sw.lng()
 
 
 
 
-    //var contentString = '<b>Rectangle moved.</b><br>' +
-    //    'New north-east corner: ' + ne.lat() + ', ' + ne.lng() + '<br>' +
-    //    'New south-west corner: ' + sw.lat() + ', ' + sw.lng();
+    var contentString = '<b>Rectangle moved.</b><br>' +
+        'New north-east corner: ' + ne_lat + ', ' + ne.lng() + '<br>' +
+        'New south-west corner: ' + sw.lat() + ', ' + sw.lng();
 
-    // Set the info window's content and position.
-    //infoWindow.setContent(contentString);
-    //infoWindow.setPosition(ne);
-    //infoWindow.open(map);
+     //Set the info window's content and position.
+    infoWindow.setContent(contentString);
+    infoWindow.setPosition(ne);
+    infoWindow.open(map);
 }
+
+//$('#effort-submit').on('click', function(){
+//    var map_params = { effort: { ne_lat: ne_lat, ne_lng: ne_lng, sw_lat: sw_lat ,sw_lng: sw_lng } }
+//
+//    $.ajax({
+//        type:    "PUT",
+//        url:     "/efforts/" + $(this).attr("data-id"),
+//        data:    map_params,
+//        success: function(){
+//        }
+//    })
+//})

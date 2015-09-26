@@ -1,4 +1,5 @@
 class User::EffortsController < ApplicationController
+  respond_to :json
 
   def index
   end
@@ -16,6 +17,7 @@ class User::EffortsController < ApplicationController
     @effort.update(member_id: current_user.id)
     if @effort.save
       @effort.vote = Vote.new
+      # @effort.update_attributes(ne_lat: params[:effort][:ne_lat],ne_lng: params[:effort][:ne_lng],sw_lat: params[:effort][:sw_lat],sw_lng: params[:effort][:sw_lng])
       current_user.efforts << @effort
       flash[:success] = "#{@effort.title} has been created!"
       redirect_to user_effort_path(id: @effort.id, user: current_user)
@@ -46,7 +48,7 @@ class User::EffortsController < ApplicationController
   private
 
   def effort_params
-    params.require(:effort).permit(:title,:description,:requested_reward,:length,:location)
+    params.require(:effort).permit(:title,:description,:requested_reward,:length,:ne_lat,:ne_lng,:sw_lat,:sw_lng)
   end
 
 end
