@@ -1,8 +1,8 @@
 <div class="effort-show row">
   <div class="col m6">
-    <div class="card red lighten-1">
-      <div class="card-content white-text">
-        <div class="card-title white-text">
+    <div class="card white">
+      <div class="card-content">
+        <div class="card-title">
         <%= image_tag(@effort.member.image) %>
         <span class="card-title">Effort Information</span>
       </div>
@@ -17,8 +17,8 @@
     </div>
   </div>
   <div class="col m6">
-    <div class="card red lighten-2">
-      <div class="card-content white-text">
+    <div class="card white">
+      <div class="card-content">
         <span class="card-title">Sponsors & Volunteer</span>
         <% if current_sponsor && @effort.sponsors.count < 7 %>
             <%= link_to "Add Sponsor", user_effort_path, :method => "put", id: "add-sponsor", class: "btn-floating btn-large waves-effect waves-light red" %>
@@ -26,6 +26,7 @@
             <%= link_to "Add Volunteer", user_effort_path, :method => "put", id: "add-sponsor", class: "btn-floating btn-large waves-effect waves-light red" %>
         <% end %>
         <div class="row">
+          <div id="effort-sponsors" class="container">
           <% if @effort.sponsors.count > 0 %>
           <% @effort.sponsors.each do |sponsor|  %>
           <div id="sponsor" class="col m3 s-v">
@@ -37,6 +38,7 @@
              <%= image_tag(@effort.volunteer.image) if @effort.volunteer %>
           </div>
           </div>
+        </div>
         <div class="row">
         <span class="card-title">Effort Progress</span>
           <h6>Start Date: <%= @effort.start_date %></h6>

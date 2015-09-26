@@ -5,7 +5,15 @@
 
 
 .effort-show .card {
-  height: 600px;
+  height: 540px;
+}
+
+.effort-show .card .card-title {
+  color: black;
+}
+#effort-sponsors {
+  margin-top: 25px;
+  background-color:white;
 }
 
 
@@ -46,6 +54,8 @@
   margin-left: 5px;
 }
 
+
+
 .vote-card {
   height: 200px;
 }
@@ -53,3 +63,4 @@
 .schedule-card {
   height: 200px;
 }
+
