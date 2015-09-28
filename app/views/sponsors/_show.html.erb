@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col s12 m3">
-    <div class="card light-blue lighten-2 profile-card">
+  <div class="col s12 m5">
+    <div class="card light-blue darken-2 profile-card">
       <div id="member-title" class="card-content white-text">
         <div class="card-title">
           <%= image_tag(@user.image) %>
@@ -10,33 +10,23 @@
       </div>
     </div>
   </div>
-  <div class="col s12 m2">
-    <div class="card light-blue lighten-2 profile-card">
-      <div class="card-content white-text">
-        <span class="card-title">My Efforts</span>
-        <a class="waves-effect waves-light btn modal-trigger" href="#modal2" id="modal2-button">Active Efforts</a>
-        <a class="waves-effect waves-light btn modal-trigger" href="#modal3" id="modal3-button">Past Efforts</a>
-      </div>
-    </div>
-  </div>
   <div class="col s12 m5">
-    <div class="card white profile-card">
-      <div id="member-title" class="card-content black-text">
+    <div id="my-efforts" class="card white profile-card">
+      <div id="volunteer-efforts" class="card-content black-text">
         <table>
           <thead>
           <tr>
-            <th data-field="id">Sponsorships</th>
-            <th data-field="name">Rewards</th>
-            <th data-field="price">Rave Reviews</th>
+            <th data-field="id">Active Effort's For You</th>
           </tr>
           </thead>
-
           <tbody>
-          <tr>
-            <td>4</td>
-            <td>22</td>
-            <td>12</td>
-          </tr>
+          <% current_user.efforts.uniq.each do |effort| %>
+              <% if effort.active %>
+                  <tr>
+                    <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %></td>
+                  </tr>
+              <% end %>
+          <% end %>
           </tbody>
         </table>
       </div>
@@ -70,21 +60,21 @@
 </div>
 </div>
 <div class="col s12">
-  <div class="card light-blue lighten-2">
+  <div class="card light-blue darken-2">
     <div class="card-content white-text">
       <p><span class="card-title">My Mission: </span><%= @user.mission %></p>
     </div>
   </div>
 </div>
 <div class="col s12">
-  <div id="hobbies" class="card light-blue lighten-2">
+  <div id="hobbies" class="card light-blue darken-2">
     <div class="card-content white-text">
       <p><span class="card-title">My Hobbies: </span><%= @user.hobby %></p>
     </div>
   </div>
 </div>
 <div class="col s12">
-  <div id="members" class="card light-blue lighten-2">
+  <div id="members" class="card light-blue darken-2">
     <div class="card-content white-text">
       <span class="card-title">My Members:</span>
       <% @user.member_count.each do |member_pair| %>
@@ -95,13 +85,11 @@
   </div>
 </div>
 <div class="col s12">
-  <div id="volunteers" class="card light-blue lighten-2">
+  <div id="volunteers" class="card light-blue darken-2">
     <div class="card-content white-text">
       <span class="card-title">My Volunteers:</span>
-    <% @user.volunteer_count.first do |volunteer_pair| %>
-          <%= image_tag(volunteer_pair.first.image) %>
-          <div class="chip"><%= volunteer_pair.last %></div>
-      <% end %>
+          <%= image_tag(@user.volunteer_count.first.first.image) %>
+          <div class="chip"><%= @user.volunteer_count.first.last %></div>
     </div>
   </div>
 </div>

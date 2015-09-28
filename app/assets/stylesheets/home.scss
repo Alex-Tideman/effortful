@@ -51,27 +51,13 @@ a.modal-close {
   color: black;
 }
 
-#modal1-button:hover {
-  color: white;
-  background-color: #FF4C4C;
-}
-
-#modal2-button {
-  color: black;
-  background-color: #ffffff;
-}
-
-#modal2-button:hover {
-  color: white;
-  background-color: #FF4C4C;
-}
-
-#modal4-button {
+#modal1-button {
   color: black;
   background-color: #9ccc65;
+  float:right;
 }
 
-#modal4-button:hover {
+#modal1-button:hover {
   color: white;
   background-color: #FF4C4C;
 }

@@ -1,59 +1,63 @@
 <div class="row">
   <div class="col m12">
     <div class="row">
-      <div class="col m3">
+      <div class="col m12">
         <div class="schedule-card card green">
           <div class="card-content white-text">
             <div class="card-title white-text">
               <span class="card-title">Schedule</span>
+              <% if @effort.length == "1 Week" %>
+                  <table>
+                    <thead>
+                    <tr>
+                      <th data-field="name">Sponsor Name</th>
+                      <th data-field="location">Sponsor Location</th>
+                      <th data-field="location">Member Location</th>
+                      <th data-field="day">Pickup Day</th>
+                      <th data-field="time">Pickup Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% @effort.sponsors.each_with_index do |sponsor, index| %>
+                        <tr>
+                          <td><%= sponsor.name %></td>
+                          <td><%= sponsor.location %></td>
+                          <td><%= @effort.member.location %></td>
+                          <td><%= @effort.week[index].strftime('%a, %d %b %Y') %></td>
+                          <td>5:00 p.m.</td>
+                        </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+              <% else %>
+                  <table>
+                    <thead>
+                    <tr>
+                      <th data-field="name">Sponsor Name</th>
+                      <th data-field="location">Sponsor Location</th>
+                      <th data-field="location">Member Location</th>
+                      <th data-field="day">Pickup Day</th>
+                      <th data-field="time">Pickup Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td><%= @effort.random_sponsor.name %></td>
+                      <td><%= @effort.random_sponsor.location %></td>
+                      <td><%= @effort.member.location %></td>
+                      <td><%= @effort.week[0].strftime('%a, %d %b %Y') %></td>
+                      <td>5:00 p.m.</td>
+                    </tr>
+                    </tbody>
+                  </table>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
-      <div class="col m9">
-        <% if @effort.length == "1 Week" %>
-            <table>
-              <thead>
-              <tr>
-                <th data-field="name">Sponsor Name</th>
-                <th data-field="location">Sponsor Location</th>
-                <th data-field="day">Pickup Day</th>
-                <th data-field="time">Pickup Time</th>
-              </tr>
-              </thead>
-              <tbody>
-              <% @effort.sponsors.each_with_index do |sponsor, index| %>
-              <tr>
-                <td><%= sponsor.name %></td>
-                <td><%= sponsor.location %></td>
-                <td><%= @effort.week[index].strftime('%a, %d %b %Y') %></td>
-                <td>5:00 p.m.</td>
-              </tr>
-                  <% end %>
-              </tbody>
-            </table>
-            <% else %>
-            <table>
-              <thead>
-              <tr>
-                <th data-field="name">Sponsor Name</th>
-                <th data-field="location">Sponsor Location</th>
-                <th data-field="day">Pickup Day</th>
-                <th data-field="time">Pickup Time</th>
-              </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                    <td><%= @effort.random_sponsor.name %></td>
-                    <td><%= @effort.random_sponsor.location %></td>
-                    <td><%= @effort.week[0].strftime('%a, %d %b %Y') %></td>
-                    <td>5:00 p.m.</td>
-                  </tr>
-              </tbody>
-            </table>
-            <% end %>
+
             </div>
         </div>
   </div>
 </div>
-<%= render partial: 'user/efforts/schedule' %>
+

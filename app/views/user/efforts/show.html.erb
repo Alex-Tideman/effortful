@@ -52,11 +52,11 @@
   </div>
 </div>
 <% if @effort.active %>
-    <%# if @effort.past && @effort.result == 'Success' %>
-    <%= render partial: 'sponsor_vote' %>
-    <%= render partial: 'sponsor_schedule' %>
-    <%# elsif @effort.vote_time < Time.now %>
-    <%# end %>
+    <% if current_user == @effort.volunteer  %>
+        <%= render partial: 'sponsor_schedule' %>
+    <% else %>
+        <%= render partial: 'sponsor_vote' %>
+    <% end %>
 <% end %>
 <script>
   var showRectangle;
@@ -91,6 +91,7 @@
     showRectangle.setMap(showMap);
 
   }
+
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
 

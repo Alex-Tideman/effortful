@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col s12 m3">
+  <div class="col s12 m5">
     <div class="card light-blue darken-2 profile-card">
       <div id="member-title" class="card-content white-text">
         <div class="card-title">
@@ -10,34 +10,24 @@
       </div>
     </div>
   </div>
-  <div class="col s12 m2">
-    <div class="card light-blue darken-2 profile-card">
-      <div class="card-content white-text">
-        <span class="card-title">My Efforts</span>
-        <a class="waves-effect waves-light btn modal-trigger modal-button" href="#modal4" id="modal4-button">Today's Efforts</a>
-        <a class="waves-effect waves-light btn modal-trigger modal-button" href="#modal2" id="modal2-button">Active Efforts</a>
-        <a class="waves-effect waves-light btn modal-trigger modal-button" href="#modal3" id="modal3-button">Past Efforts</a>
-      </div>
-    </div>
-  </div>
   <div class="col s12 m5">
-    <div class="card white profile-card">
-      <div id="member-title" class="card-content black-text">
+    <div id="my-efforts" class="card white profile-card">
+      <div id="volunteer-efforts" class="card-content black-text">
         <table>
           <thead>
           <tr>
-            <th data-field="id">Sponsorships</th>
-            <th data-field="name">Rewards</th>
-            <th data-field="price">Rave Reviews</th>
+            <th data-field="id">Active Effort's For You</th>
           </tr>
           </thead>
 
           <tbody>
-          <tr>
-            <td>4</td>
-            <td>22</td>
-            <td>12</td>
-          </tr>
+          <% current_user.efforts.each do |effort| %>
+              <% if effort.active %>
+                  <tr>
+                    <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %></td>
+                  </tr>
+              <% end %>
+          <% end %>
           </tbody>
         </table>
       </div>
@@ -98,12 +88,71 @@
 <div class="col s12">
   <div id="volunteers" class="card light-blue darken-2">
     <div class="card-content white-text">
-      <span class="card-title">My Sponsors:</span>
-      <% @user.sponsor_count.each do |sponsor_pair| %>
-          <%= image_tag(sponsor_pair.first.image) %>
-          <div class="chip"><%= sponsor_pair.last %></div>
-      <% end %>
+      <span class="card-title">My Volunteers:</span>
+      <%= image_tag(@user.volunteer_count.first.first.image) %>
+      <div class="chip"><%= @user.volunteer_count.first.last %></div>
     </div>
   </div>
 </div>
 </div>
+
+<script>
+
+  var directionsDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var routeMap;
+
+  function initMap() {
+    directionsDisplay = new google.maps.DirectionsRenderer();
+
+    routeMap = new google.maps.Map(document.getElementById("route-map"), {
+      center: {lat: 39.7392, lng: -104.9903},
+      zoom: 14
+    });
+    directionsDisplay.setMap(routeMap);
+
+//    var sponsorLocation = new google.maps.LatLng($('#route-map').attr("data-sponsor-pos").val());
+//    var memberLocation = new google.maps.LatLng($('#route-map').attr("data-member-pos").val());
+
+    var sponsorLocation = new google.maps.LatLng(39.7396, -104.9907);
+    var memberLocation = new google.maps.LatLng(39.7388, -104.9899);
+
+
+    var sponsorMarker = new google.maps.Marker({
+      position: sponsorLocation,
+      animation: google.maps.Animation.BOUNCE,
+    });
+
+    var memberMarker = new google.maps.Marker({
+      position: memberLocation,
+      animation: google.maps.Animation.BOUNCE,
+    });
+
+    sponsorMarker.setMap(routeMap);
+    memberMarker.setMap(routeMap);
+    calcRoute();
+
+  }
+
+  function calcRoute() {
+
+    var sponsorLocation = new google.maps.LatLng(39.8, -104.9907);
+    var memberLocation = new google.maps.LatLng(39.7388, -104.9899);
+
+    var request = {
+      origin: sponsorLocation,
+      destination: memberLocation,
+      travelMode: google.maps.TravelMode.BICYCLING
+    };
+    directionsService.route(request, function (response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+        directionsDisplay.setMap(routeMap)
+      } else {
+        alert("couldn't get directions:" + status);
+      }
+    });
+  }
+
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>

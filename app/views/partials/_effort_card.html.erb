@@ -46,31 +46,6 @@
     </div>
   </div>
 </div>
-<div id="modal4" class="modal bottom-sheet">
-  <div class="modal-content">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">X</a>
-    <br>
-    <div id="map"></div>
-    <div class="row">
-      <% @user.efforts.each do |effort| %>
-          <% if @user == effort.volunteer %>
-            <div class="col s12 m6">
-              <div class="card darken-1">
-                <div class="card-content">
-                  <span class="card-title"><%= effort.title %></span>
-                  <p id="my-location"><%= what3words.words_to_position current_user.w3w_location %>
-                  <p id="member-location"><%= what3words.words_to_position effort.member.w3w_location %>
-                  <p id="sponsor-location"><%= what3words.words_to_position effort.sponsors.first.w3w_location %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-    <% end %>
-    </div>
-    <div class="modal-footer">
-    </div>
-  </div>
-</div>
 <script>
   $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

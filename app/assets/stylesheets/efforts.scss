@@ -61,6 +61,14 @@
 }
 
 .schedule-card {
-  height: 200px;
+  height: 100%;
 }
 
+.schedule-card .card-title {
+  font-size: 32px;
+  text-align: center;
+}
+
+#my-efforts {
+  overflow: scroll;
+}
