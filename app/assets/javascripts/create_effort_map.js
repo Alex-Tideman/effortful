@@ -36,6 +36,8 @@ function initMap() {
 
     // Add an event listener on the rectangle.
     rectangle.addListener('bounds_changed', showNewRect);
+    rectangle.addListener('bounds_changed', updateEffortLocation);
+
 
     // Define an info window on the map.
     infoWindow = new google.maps.InfoWindow();
@@ -47,18 +49,18 @@ function showNewRect(event) {
     var ne = rectangle.getBounds().getNorthEast();
     var sw = rectangle.getBounds().getSouthWest();
 
-    ne_lat = ne.lat()
-    ne_lng = ne.lng()
-    sw_lat = sw.lat()
-    sw_lng = sw.lng()
+    var ne_lat = ne.lat();
+    var ne_lng = ne.lng();
+    var sw_lat = sw.lat();
+    var sw_lng = sw.lng();
 
 
 
 
     var contentString = '<b>Your new Effort area</b><br>'
-        //+
-        //'New north-east corner: ' + ne_lat + ', ' + ne.lng() + '<br>' +
-        //'New south-west corner: ' + sw.lat() + ', ' + sw.lng();
+        +
+        'New north-east corner: ' + ne_lat + ', ' + ne.lng() + '<br>' +
+        'New south-west corner: ' + sw.lat() + ', ' + sw.lng();
 
      //Set the info window's content and position.
     infoWindow.setContent(contentString);
@@ -66,14 +68,19 @@ function showNewRect(event) {
     infoWindow.open(map);
 }
 
-//$('#effort-submit').on('click', function(){
-//    var map_params = { effort: { ne_lat: ne_lat, ne_lng: ne_lng, sw_lat: sw_lat ,sw_lng: sw_lng } }
-//
-//    $.ajax({
-//        type:    "PUT",
-//        url:     "/efforts/" + $(this).attr("data-id"),
-//        data:    map_params,
-//        success: function(){
-//        }
-//    })
-//})
+function updateEffortLocation() {
+    var ne = rectangle.getBounds().getNorthEast();
+    var sw = rectangle.getBounds().getSouthWest();
+
+    var ne_lat = ne.lat();
+    var ne_lng = ne.lng();
+    var sw_lat = sw.lat();
+    var sw_lng = sw.lng();
+
+    $('#effort_ne_lat').val(ne_lat);
+    $('#effort_ne_lng').val(ne_lng);
+    $('#effort_sw_lat').val(sw_lat);
+    $('#effort_sw_lng').val(sw_lng);
+
+}
+
