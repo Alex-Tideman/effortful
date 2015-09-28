@@ -30,30 +30,28 @@ RSpec.configure do |config|
 
 
   def user
-    @user ||= User.new(name: "Alex Tideman",
+    @user ||= User.create(name: "Alex Tideman",
                        first_name: "Alex",
                        last_name: "Tideman",
                        email: "alex.tideman@gmail.com",
                        image: "default.png",
-                       gender: "male",
                        token: ENV['google_id'],
-                       uid: "9999",
+                       uid: "104319262166806203464",
                        provider: "google_oauth2")
   end
 
   def get_user
     OmniAuth.config.test_mode = true
 
-    OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new ({
+    OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new ({
                                                                        'provider'    => user.provider,
                                                                        'uid'         => user.uid,
                                                                        'info'        => {:name =>user.name,
                                                                                          :first_name =>user.first_name,
                                                                                          :last_name =>user.last_name,
                                                                                          :email =>user.email,
-                                                                                         :image =>user.image,
-                                                                                         :gender => user.gender},
-                                                                       'credentials' => {:token => ENV['google_id']}
+                                                                                         :image =>user.image},
+                                                                       'credentials' => {:token =>user.token},
                                                                    })
   end
 end

@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
   namespace :user, path: ':user', as: :user do
     resources :efforts, except: [:destroy] do
-
     end
   end
 

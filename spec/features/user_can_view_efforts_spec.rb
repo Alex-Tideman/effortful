@@ -1,10 +1,18 @@
 require './spec/rails_helper'
 
-RSpec.describe "User can logout after logging in", type: :feature do
+RSpec.describe "User can view all efforts after logging in", type: :feature do
 
 
-  it 'user can view profile and edit profile' do
-    VCR.use_cassette('user_can_edit_profile_test#edit') do
+  it 'user can view efforts index' do
+    VCR.use_cassette('user_can_view_efforts#view') do
+
+      user1 = User.create(name: "Alex Tideman",
+                      first_name: "Bob",
+                      last_name: "Jones",
+                      email: "alex.tideman@gmail.com",
+                      image: "default.png")
+      effort1 = Effort.create(title: "Sing songs", description: "Singing in the rain", length: "1 Week",
+                    requested_reward: "Food", member_id: user1.id)
       visit root_path
 
       get_user
@@ -43,36 +51,19 @@ RSpec.describe "User can logout after logging in", type: :feature do
       expect(page).to have_content("Cycling")
       expect(page).to have_content("Help people")
 
+      visit efforts_path
+
+      click_link_or_button 'Sing songs'
+
+      expect(current_path).to eq user_effort_path(id: effort1.id, user: user1.id)
+
+      expect(page).to have_content("Singing in the rain")
+      expect(page).to have_content("Start Date: TBD")
+      expect(page).to have_content("Time Remaining: Effort has yet to begin.")
+      
     end
   end
 
-  it 'user can view profile and logout' do
-    VCR.use_cassette('user_can_logout_test#logout') do
-      visit root_path
 
-      get_user
-      click_link_or_button 'Login'
-
-      expect(current_path).to eq root_path
-      click_link_or_button 'Profile'
-
-      expect(current_path).to eq profile_path
-
-      expect(page).to have_content("Alex Tideman")
-      expect(page).to have_content("My Hobbies")
-      expect(page).to have_content("My Mission")
-      expect(page).to have_content("My Sponsors")
-      expect(page).to have_content("My Volunteers")
-
-
-      expect(page).to have_content("Logout")
-      click_link_or_button 'Logout'
-
-      expect(current_path).to eq root_path
-
-      expect(page).to have_no_content("Logout")
-
-    end
-  end
 
 end

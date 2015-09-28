@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926190025) do
+ActiveRecord::Schema.define(version: 20150928225358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20150926190025) do
   create_table "efforts", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
-    t.string   "location"
     t.string   "start_date"
     t.string   "length"
     t.string   "requested_reward"
@@ -27,7 +26,6 @@ ActiveRecord::Schema.define(version: 20150926190025) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "volunteer_id"
-    t.string   "sponsors"
     t.float    "ne_lat"
     t.float    "ne_lng"
     t.float    "sw_lat"
@@ -69,16 +67,14 @@ ActiveRecord::Schema.define(version: 20150926190025) do
     t.string   "uid"
     t.string   "provider"
     t.string   "token"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
-    t.string   "gender"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "password_digest"
     t.string   "hobby"
     t.string   "mission"
-    t.string   "location",        default: "sound.misty.loads"
-    t.string   "role",            default: "Member"
+    t.string   "location",   default: "sound.misty.loads"
+    t.string   "role",       default: "Member"
   end
 
   create_table "votes", force: :cascade do |t|

@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
     user.email = data.info.email
     user.image = data.info.image
     user.token = data.credentials.token
-    user.gender = data.extra.gender
 
     user.save
     user
