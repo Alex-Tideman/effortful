@@ -89,8 +89,10 @@
   <div id="volunteers" class="card light-blue darken-2">
     <div class="card-content white-text">
       <span class="card-title">My Volunteers:</span>
+      <% if @user.volunteer_count.count > 0 %>
       <%= image_tag(@user.volunteer_count.first.first.image) %>
       <div class="chip"><%= @user.volunteer_count.first.last %></div>
+          <% end %>
     </div>
   </div>
 </div>
