@@ -63,16 +63,20 @@
   var showMap;
 
   function initMap() {
+
+    var effortCenter = {lat: <%= @effort.ne_lat %>, lng: <%= @effort.ne_lng %> }
+
     showMap = new google.maps.Map(document.getElementById('show-map'), {
-      center: {lat: 39.7392, lng: -104.9903},
-      zoom: 14
+      center: effortCenter,
+      zoom: 12
     });
 
+
     var bounds = {
-      north: 39.744,
-      south: 39.735,
-      east: -104.989,
-      west: -104.995
+      north: <%= @effort.ne_lat %>,
+      south: <%= @effort.sw_lat %>,
+      east: <%= @effort.ne_lng %>,
+      west: <%= @effort.sw_lng %>
     };
 
     // Define the rectangle and set its editable property to true.
