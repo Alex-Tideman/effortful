@@ -35,6 +35,7 @@ RSpec.configure do |config|
                        last_name: "Tideman",
                        email: "alex.tideman@gmail.com",
                        image: "default.png",
+                       gender: "male",
                        token: ENV['google_id'],
                        uid: "9999",
                        provider: "google_oauth2")
@@ -50,7 +51,8 @@ RSpec.configure do |config|
                                                                                          :first_name =>user.first_name,
                                                                                          :last_name =>user.last_name,
                                                                                          :email =>user.email,
-                                                                                         :image =>user.image},
+                                                                                         :image =>user.image,
+                                                                                         :gender => user.gender},
                                                                        'credentials' => {:token => ENV['google_id']}
                                                                    })
   end

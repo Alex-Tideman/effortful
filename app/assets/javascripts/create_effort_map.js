@@ -55,9 +55,10 @@ function showNewRect(event) {
 
 
 
-    var contentString = '<b>Rectangle moved.</b><br>' +
-        'New north-east corner: ' + ne_lat + ', ' + ne.lng() + '<br>' +
-        'New south-west corner: ' + sw.lat() + ', ' + sw.lng();
+    var contentString = '<b>Your new Effort area</b><br>'
+        //+
+        //'New north-east corner: ' + ne_lat + ', ' + ne.lng() + '<br>' +
+        //'New south-west corner: ' + sw.lat() + ', ' + sw.lng();
 
      //Set the info window's content and position.
     infoWindow.setContent(contentString);
