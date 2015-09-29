@@ -54,4 +54,5 @@ class Schedule < ActiveRecord::Base
   end
 
 
+
 end

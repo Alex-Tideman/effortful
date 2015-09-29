@@ -30,4 +30,5 @@ class Effort < ActiveRecord::Base
     end
   end
 
+
 end

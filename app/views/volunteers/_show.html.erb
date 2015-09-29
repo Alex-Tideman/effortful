@@ -97,28 +97,30 @@
 </div>
 </div>
 <div id="volunteer-schedule" class="row">
+  <div class="container">
   <div class="col m12">
-    <table>
+    <h3>Your Active Effort's Delivery Schedule</h3>
+    <table class="highlight">
       <thead>
       <tr>
-        <th data-field="name">Date</th>
+        <th data-field="date">Date</th>
+        <th data-field="time">Effort Title</th>
         <th data-field="location">My Location</th>
         <th data-field="location">Sponsor Location</th>
         <th data-field="location">Member Location</th>
-        <th data-field="time">Pickup Time</th>
       </tr>
       </thead>
       <tbody>
       <% current_user.efforts.uniq.each do |effort| %>
           <% if effort.schedule && effort.volunteer == current_user %>
               <% effort.schedule.donate_schedule.each do |day| %>
-                      <tr>
-                        <td><%= day.first.strftime('%a, %d %b %Y') %></td>
-                        <td><%= @user.location %></td>
-                        <td><%= day.last.location %></td>
-                        <td><%= effort.member.location %></td>
-                        <td>5:00 p.m.</td>
-                      </tr>
+                  <tr>
+                    <td><%= day.first.strftime('%a, %d %b %Y') %></td>
+                    <td><%= effort.title %></td>
+                    <td><%= @user.location %></td>
+                    <td><%= day.last.location %></td>
+                    <td><%= effort.member.location %></td>
+                  </tr>
               <% end %>
           <% end %>
       <% end %>
@@ -126,64 +128,4 @@
     </table>
   </div>
 </div>
-<script>
-
-
-  var directionsDisplay;
-  var directionsService = new google.maps.DirectionsService();
-  var routeMap;
-
-  function initMap() {
-    directionsDisplay = new google.maps.DirectionsRenderer();
-
-    routeMap = new google.maps.Map(document.getElementById("route-map"), {
-      center: {lat: 39.7392, lng: -104.9903},
-      zoom: 14
-    });
-    directionsDisplay.setMap(routeMap);
-
-//    var sponsorLocation = new google.maps.LatLng($('#route-map').attr("data-sponsor-pos").val());
-//    var memberLocation = new google.maps.LatLng($('#route-map').attr("data-member-pos").val());
-
-    var sponsorLocation = new google.maps.LatLng(39.7396, -104.9907);
-    var memberLocation = new google.maps.LatLng(39.7388, -104.9899);
-
-
-    var sponsorMarker = new google.maps.Marker({
-      position: sponsorLocation,
-      animation: google.maps.Animation.BOUNCE,
-    });
-
-    var memberMarker = new google.maps.Marker({
-      position: memberLocation,
-      animation: google.maps.Animation.BOUNCE,
-    });
-
-    sponsorMarker.setMap(routeMap);
-    memberMarker.setMap(routeMap);
-    calcRoute();
-
-  }
-
-  function calcRoute() {
-
-    var sponsorLocation = new google.maps.LatLng(39.8, -104.9907);
-    var memberLocation = new google.maps.LatLng(39.7388, -104.9899);
-
-    var request = {
-      origin: sponsorLocation,
-      destination: memberLocation,
-      travelMode: google.maps.TravelMode.BICYCLING
-    };
-    directionsService.route(request, function (response, status) {
-      if (status == google.maps.DirectionsStatus.OK) {
-        directionsDisplay.setDirections(response);
-        directionsDisplay.setMap(routeMap)
-      } else {
-        alert("couldn't get directions:" + status);
-      }
-    });
-  }
-
-</script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
+</div>

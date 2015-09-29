@@ -51,19 +51,5 @@ class User < ActiveRecord::Base
     location.split('.')
   end
 
-  def delivery_schedule
-    schedule = Hash.new{ |k,v| k[v] = 0 }
-    efforts.uniq.each do |effort|
-      if effort.schedule && effort.sponsor == self
-        effort.schedule.donate_schedule.each do |day|
-          schedule[day.first.strftime('%a, %d %b %Y')] << day.second
-        end
-      end
-    end
-  end
-
-
-  private
-
 
 end

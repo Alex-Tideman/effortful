@@ -6,4 +6,5 @@ module ApplicationHelper
 
     "#{prefix}/all-#{count}-#{max_updated_at}"
   end
+
 end
