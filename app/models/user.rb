@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   def volunteer_count
     volunteers_with_count = Hash.new{ |k,v| k[v] = 0 }
     self.efforts.uniq.each do |effort|
-        volunteers_with_count[effort.volunteer] += 1 if effort.volunteer
+        volunteers_with_count[effort.volunteer] += 1
     end
     volunteers_with_count
   end
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   def member_count
     members_with_count = Hash.new{ |k,v| k[v] = 0 }
     self.efforts.uniq.each do |effort|
-      members_with_count[effort.member] += 1 if effort.member
+      members_with_count[effort.member] += 1
     end
     members_with_count
   end
@@ -50,6 +50,18 @@ class User < ActiveRecord::Base
   def w3w_split
     location.split('.')
   end
+
+  def delivery_schedule
+    schedule = Hash.new{ |k,v| k[v] = 0 }
+    efforts.uniq.each do |effort|
+      if effort.schedule && effort.sponsor == self
+        effort.schedule.donate_schedule.each do |day|
+          schedule[day.first.strftime('%a, %d %b %Y')] << day.second
+        end
+      end
+    end
+  end
+
 
   private
 

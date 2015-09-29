@@ -1,5 +1,5 @@
 class Vote < ActiveRecord::Base
-  belongs_to :user
+  has_many :users
   belongs_to :effort
 
   def result

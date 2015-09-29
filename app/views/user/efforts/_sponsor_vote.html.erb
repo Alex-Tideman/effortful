@@ -30,8 +30,12 @@
                 <p>Time Remaining to Vote: <%= @effort.schedule.time_remaining %> hours</p>
                 <% if sponsor == current_user %>
                     <div class="vote-buttons">
-                      <button id="yes-vote" class="btn-floating btn-large waves-effect waves-light green" data-id=<%= @effort.vote.id%> >YES</button>
-                      <button id="no-vote" class="btn-floating btn-large waves-effect waves-light red" data-id=<%= @effort.vote.id %>>NO</button>
+                      <% if current_user.votes.include?(@effort.vote) %>
+                      <p>You already voted!</p>
+                      <% else %>
+                      <button id="yes-vote" class="btn-floating btn-large waves-effect waves-light green" data-id=<%= @effort.vote.id%>, user-id=<%= current_user.id%> >YES</button>
+                      <button id="no-vote" class="btn-floating btn-large waves-effect waves-light red" data-id=<%= @effort.vote.id %>, user-id=<%= current_user.id%> >NO</button>
+                      <% end %>
                     </div>
                 <% end %>
               </div>
@@ -44,29 +48,36 @@
 <script>
   $(document).ready(function(){
     $('#yes-vote').on('click', function(){
-      var vote_params = { vote: { id: $(this).attr("data-id"), type: "yes" } }
+      var vote_params    = { vote: { id: $(this).attr("data-id"), type: "yes", user_id: $(this).attr("user-id") } }
+      var $votingButtons = $(this).parent();
+      debugger;
 
       $.ajax({
         type:    "PUT",
         url:     "/votes/" + $(this).attr("data-id"),
         data:    vote_params,
         success: function(){
-          $("html").load("#voting-results");
-          $(this.parent()).text("You voted Yes!");
+          var votes = parseInt($("#yes-result").html()) + 1;
+          $("#yes-result").html(votes);
+          $votingButtons.children().remove();
+          $votingButtons.prepend("<p>You voted Yes!</p>")
         }
       })
     })
 
     $('#no-vote').on('click', function(){
-      var vote_params = { vote: { id: $(this).attr("data-id"), type: "no" } }
+      var vote_params = { vote: { id: $(this).attr("data-id"), type: "no", user_id: $(this).attr("user-id") } }
+      var $votingButtons = $(this).parent();
 
       $.ajax({
         type:    "PUT",
         url:     "/votes/" + $(this).attr("data-id"),
         data:    vote_params,
         success: function(){
-          $("html").load("#voting-results");
-          $(this.parent()).text("You voted No");
+          var votes = parseInt($("#no-result").html()) + 1;
+          $("#no-result").html(votes);
+          $votingButtons.children().remove();
+          $votingButtons.prepend("<p>You voted No</p>")
         }
       })
     })

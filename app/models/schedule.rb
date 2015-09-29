@@ -34,11 +34,17 @@ class Schedule < ActiveRecord::Base
   end
 
   def donate_schedule
-    week = donate_week
-    shuffle_sponsors = effort.sponsors.shuffle
 
-    week.map do |day|
-      [day,shuffle_sponsors.pop]
+    if effort.length == "1 Week"
+      week = donate_week
+      shuffle_sponsors = effort.sponsors.shuffle
+
+      week.map do |day|
+        [day,shuffle_sponsors.pop]
+      end
+    else
+      day = donate_week[0]
+      [[day, effort.sponsors.shuffle.pop]]
     end
 
   end
