@@ -18,12 +18,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <% @effort.sponsors.each_with_index do |sponsor, index| %>
+                    <% @effort.schedule.donate_schedule do |day| %>
                         <tr>
-                          <td><%= sponsor.name %></td>
-                          <td><%= sponsor.location %></td>
+                          <td><%= day.last.name %></td>
+                          <td><%= day.last.location %></td>
                           <td><%= @effort.member.location %></td>
-                          <td><%= @effort.week[index].strftime('%a, %d %b %Y') %></td>
+                          <td><%= day.first.strftime('%a, %d %b %Y') %></td>
                           <td>5:00 p.m.</td>
                         </tr>
                     <% end %>
@@ -42,10 +42,10 @@
                     </thead>
                     <tbody>
                     <tr>
-                      <td><%= @effort.start.random_sponsor.name %></td>
-                      <td><%= @effort.start.random_sponsor.location %></td>
+                      <td><%= @effort.schedule.random_sponsor.name %></td>
+                      <td><%= @effort.schedule.random_sponsor.location %></td>
                       <td><%= @effort.member.location %></td>
-                      <td><%= @effort.start.donate_week[0].strftime('%a, %d %b %Y') %></td>
+                      <td><%= @effort.schedule.donate_week[0].strftime('%a, %d %b %Y') %></td>
                       <td>5:00 p.m.</td>
                     </tr>
                     </tbody>

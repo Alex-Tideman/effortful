@@ -3,6 +3,13 @@
     "coverage": {
       "/Users/alextideman/TuringProjects/Mod3/Week5/effortful/app/helpers/application_helper.rb": [
         1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
         null
       ],
       "/Users/alextideman/TuringProjects/Mod3/Week5/effortful/app/models/vote.rb": [
@@ -29,6 +36,7 @@
       ],
       "/Users/alextideman/TuringProjects/Mod3/Week5/effortful/app/models/user.rb": [
         1,
+        1,
         null,
         1,
         1,
@@ -82,6 +90,21 @@
         null,
         null,
         1,
+        null,
+        null
+      ],
+      "/Users/alextideman/TuringProjects/Mod3/Week5/effortful/app/models/concerns/cache_invalidator.rb": [
+        1,
+        1,
+        null,
+        1,
+        2,
+        2,
+        2,
+        null,
+        2,
+        18,
+        null,
         null,
         null
       ],
@@ -153,6 +176,8 @@
       "/Users/alextideman/TuringProjects/Mod3/Week5/effortful/app/models/effort.rb": [
         1,
         1,
+        null,
+        1,
         1,
         1,
         1,
@@ -171,6 +196,10 @@
         null,
         4,
         8,
+        null,
+        null,
+        1,
+        0,
         null,
         null,
         1,
@@ -265,7 +294,6 @@
         1,
         1,
         1,
-        null,
         1,
         1,
         1,
@@ -284,8 +312,11 @@
         null,
         0,
         0,
+        0,
         null,
         0,
+        0,
+        null,
         0,
         null,
         null,
@@ -310,6 +341,6 @@
         null
       ]
     },
-    "timestamp": 1443483907
+    "timestamp": 1443535010
   }
 }

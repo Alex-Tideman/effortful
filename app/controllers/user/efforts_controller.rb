@@ -35,7 +35,7 @@ class User::EffortsController < ApplicationController
 
     if current_volunteer && @effort.sponsors.count == 7
       @effort.update(volunteer_id: current_user.id)
-      @effort.start
+      @effort.schedule = Schedule.new
     elsif current_volunteer
       @effort.update(volunteer_id: current_user.id)
       current_user.efforts << @effort

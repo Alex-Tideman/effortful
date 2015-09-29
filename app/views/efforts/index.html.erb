@@ -1,7 +1,5 @@
-<% cache(cache_key_for(Effort)) do %>
     <div class="row">
   <% @efforts.each do |effort| %>
-      <% cache(effort) do %>
           <div class="col s12 m2">
             <div id="effort-index-card" class="card darken-3">
               <div class="card-content">
@@ -11,9 +9,7 @@
             </div>
           </div>
       <% end %>
-  <% end %>
 </div>
-<% end %>
 
 <!--<div id="map-container"><div id="effort-map"></div></div>-->
 <script>
