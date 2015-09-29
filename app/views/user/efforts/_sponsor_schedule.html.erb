@@ -1,63 +1,48 @@
-<div class="row">
-  <div class="col m12">
-    <div class="row">
-      <div class="col m12">
-        <div class="schedule-card card green">
-          <div class="card-content white-text">
-            <div class="card-title white-text">
-              <span class="card-title">Schedule</span>
-              <% if @effort.length == "1 Week" %>
-                  <table>
-                    <thead>
-                    <tr>
-                      <th data-field="name">Sponsor Name</th>
-                      <th data-field="location">Sponsor Location</th>
-                      <th data-field="location">Member Location</th>
-                      <th data-field="day">Pickup Day</th>
-                      <th data-field="time">Pickup Time</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% @effort.schedule.donate_schedule.each do |day| %>
-                        <tr>
-                          <td><%= day.last.name %></td>
-                          <td><%= day.last.location %></td>
-                          <td><%= @effort.member.location %></td>
-                          <td><%= day.first.strftime('%a, %d %b %Y') %></td>
-                          <td>5:00 p.m.</td>
-                        </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-              <% else %>
-                  <table>
-                    <thead>
-                    <tr>
-                      <th data-field="name">Sponsor Name</th>
-                      <th data-field="location">Sponsor Location</th>
-                      <th data-field="location">Member Location</th>
-                      <th data-field="day">Pickup Day</th>
-                      <th data-field="time">Pickup Time</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td><%= @effort.schedule.random_sponsor.name %></td>
-                      <td><%= @effort.schedule.random_sponsor.location %></td>
-                      <td><%= @effort.member.location %></td>
-                      <td><%= @effort.schedule.donate_week[0].strftime('%a, %d %b %Y') %></td>
-                      <td>5:00 p.m.</td>
-                    </tr>
-                    </tbody>
-                  </table>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-
-            </div>
-        </div>
+<div id="volunteer-schedule" class="row">
+  <div class="container">
+    <div class="col m12">
+      <h3>Effort Delivery Schedule</h3>
+      <% if @effort.length == "1 Week" %>
+          <table class="highlight">
+            <thead>
+            <tr>
+              <th data-field="name">Sponsor Name</th>
+              <th data-field="location">Sponsor Location</th>
+              <th data-field="location">Member Location</th>
+              <th data-field="day">Pickup Day</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @effort.schedule.donate_schedule.each do |day| %>
+                <tr>
+                  <td><%= day.last.name %></td>
+                  <td><%= day.last.location %></td>
+                  <td><%= @effort.member.location %></td>
+                  <td><%= day.first.strftime('%a, %d %b %Y') %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+      <% else %>
+          <table>
+            <thead>
+            <tr>
+              <th data-field="name">Sponsor Name</th>
+              <th data-field="location">Sponsor Location</th>
+              <th data-field="location">Member Location</th>
+              <th data-field="day">Pickup Day</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><%= @effort.schedule.random_sponsor.name %></td>
+              <td><%= @effort.schedule.random_sponsor.location %></td>
+              <td><%= @effort.member.location %></td>
+              <td><%= @effort.schedule.donate_week[0].strftime('%a, %d %b %Y') %></td>
+            </tr>
+            </tbody>
+          </table>
+      <% end %>
+    </div>
   </div>
 </div>
-

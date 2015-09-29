@@ -59,7 +59,7 @@ RSpec.describe "User can view all efforts after logging in", type: :feature do
 
       expect(page).to have_content("Singing in the rain")
       expect(page).to have_content("Start Date: TBD")
-      expect(page).to have_content("Time Remaining: Effort has yet to begin.")
+      expect(page).to have_content("Time Remaining: TBD")
       
     end
   end
