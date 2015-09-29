@@ -10,10 +10,10 @@
             <div id="voting-results">
               <h6>Yes: <span id="yes-result"><%= @effort.vote.yes %></span></h6>
               <h6>No: <span id="no-result"><%= @effort.vote.no %></span></h6>
-              <% if @effort.vote.yes >= @effort.vote.yes %>
+              <% if @effort.vote.yes >= @effort.vote.no %>
                   <h5>Result: Success!</h5>
               <% else %>
-                  <h5>Result: Success!</h5>
+                  <h5>Result: Next time!</h5>
               <% end %>
             </div>
           </div>
@@ -51,8 +51,8 @@
         url:     "/votes/" + $(this).attr("data-id"),
         data:    vote_params,
         success: function(){
-          $("html").load("#voting-results");
-          $("#vote-buttons").remove();
+          $("html").load("#voting-results" );
+          $(this.parent()).text("You voted Yes!");
         }
       })
     })
@@ -65,8 +65,8 @@
         url:     "/votes/" + $(this).attr("data-id"),
         data:    vote_params,
         success: function(){
-          $("html").load("#voting-results" )
-          $("#vote-buttons").remove();
+          $("html").load("#voting-results");
+          $(this.parent()).text("You voted No");
         }
       })
     })

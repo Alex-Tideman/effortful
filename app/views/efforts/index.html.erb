@@ -10,3 +10,40 @@
       </div>
 <% end %>
 </div>
+<div id="map-container"><div id="effort-map"></div></div>
+<script>
+    var effortMap;
+
+    function initMap() {
+
+        effortMap = new google.maps.Map(document.getElementById('effort-map'), {
+            center: {lat: 39.7392, lng: -104.9903 },
+            zoom: 8
+        });
+
+        <%= @efforts.each do |effort| %>
+        var effortRectangle;
+
+        var bounds = {
+            north: <%= effort.ne_lat %>,
+            south: <%= effort.sw_lat %>,
+            east: <%= effort.ne_lng %>,
+            west: <%= effort.sw_lng %>
+        };
+
+        effortRectangle = new google.maps.Rectangle({
+            strokeColor: '#7F0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 4,
+            fillColor: '#e02032',
+            fillOpacity: 0.35,
+            bounds: bounds,
+            editable: false,
+            draggable: false
+        });
+
+        effortRectangle.setMap(effortMap);
+
+        <% end %>
+    }
+</script>
