@@ -14,7 +14,7 @@ class Schedule < ActiveRecord::Base
   end
 
   def vote_period
-    true if ((Time.now > (end_date - 23.hours)) && (Time.now < end_date) )
+    true if ((Time.now > (end_date - 24.hours)) && (Time.now < end_date) )
   end
 
   def end_date

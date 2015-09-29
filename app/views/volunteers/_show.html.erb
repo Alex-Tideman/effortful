@@ -1,4 +1,3 @@
-<% cache do %>
 <div class="row">
   <div class="col s12 m5">
     <div class="card light-blue darken-2 profile-card">
@@ -20,10 +19,9 @@
             <th data-field="id">Active Effort's For You</th>
           </tr>
           </thead>
-
           <tbody>
-          <% current_user.efforts.each do |effort| %>
-              <% if effort.active %>
+          <% current_user.efforts.uniq.each do |effort| %>
+              <% if effort.schedule && effort.volunteer == current_user %>
                   <tr>
                     <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %></td>
                   </tr>
@@ -98,7 +96,6 @@
   </div>
 </div>
 </div>
-<% end %>
 <script>
 
   var directionsDisplay;

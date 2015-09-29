@@ -34,15 +34,15 @@ class User < ActiveRecord::Base
   def volunteer_count
     volunteers_with_count = Hash.new{ |k,v| k[v] = 0 }
     self.efforts.uniq.each do |effort|
-        volunteers_with_count[effort.volunteer] += 1
-      end
+        volunteers_with_count[effort.volunteer] += 1 if effort.volunteer
+    end
     volunteers_with_count
   end
 
   def member_count
     members_with_count = Hash.new{ |k,v| k[v] = 0 }
     self.efforts.uniq.each do |effort|
-      members_with_count[effort.member] += 1
+      members_with_count[effort.member] += 1 if effort.member
     end
     members_with_count
   end

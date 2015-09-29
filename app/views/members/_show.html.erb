@@ -22,7 +22,7 @@
           </thead>
           <tbody>
           <% current_user.efforts.uniq.each do |effort| %>
-              <% if effort.active %>
+              <% if effort.schedule && effort.member == current_user %>
                   <tr>
                     <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %></td>
                   </tr>

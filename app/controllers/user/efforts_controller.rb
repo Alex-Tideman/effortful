@@ -35,12 +35,13 @@ class User::EffortsController < ApplicationController
 
     if current_volunteer && @effort.sponsors.count == 7
       @effort.update(volunteer_id: current_user.id)
+      current_volunteer.efforts << @effort
       @effort.schedule = Schedule.new
     elsif current_volunteer
       @effort.update(volunteer_id: current_user.id)
-      current_user.efforts << @effort
+      current_volunter.efforts << @effort
     elsif current_sponsor
-      current_user.efforts << @effort
+      current_sponsor.efforts << @effort
     end
 
     redirect_to user_effort_path(id: @effort.id, user: @effort.member)

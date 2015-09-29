@@ -13,7 +13,7 @@ class Effort < ActiveRecord::Base
   end
 
   def volunteer
-    User.find(volunteer_id) if !volunteer_id.nil?
+    User.find(volunteer_id) if volunteer_id
   end
 
   def sponsors
