@@ -23,7 +23,7 @@ class Effort < ActiveRecord::Base
   end
 
   def result
-    if yes_vote >= no_vote
+    if vote.yes >= vote.no
       "Success"
     else
       "Next time"

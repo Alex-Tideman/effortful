@@ -13,8 +13,8 @@ class Schedule < ActiveRecord::Base
     created_at.strftime('%a, %d %b %Y')
   end
 
-  def vote_time
-    effort.end_date - 12.hours
+  def vote_period
+    true if ((Time.now > (end_date - 23.hours)) && (Time.now < end_date) )
   end
 
   def end_date

@@ -1,11 +1,11 @@
-    <div class="effort-show row">
+<div class="effort-show row">
   <div class="col m6">
     <div class="card white">
       <div class="card-content">
         <div class="card-title">
-        <%= image_tag(@effort.member.image) %>
-        <span class="card-title">Effort Information</span>
-      </div>
+          <%= image_tag(@effort.member.image) %>
+          <span class="card-title">Effort Information</span>
+        </div>
         <h6>Title: <%= @effort.title %></h6>
         <h6>Member: <%= @effort.member.name %></h6>
         <h6>Description: <%= @effort.description %></h6>
@@ -27,22 +27,27 @@
         <% end %>
         <div class="row">
           <div id="effort-sponsors" class="container">
-          <% if @effort.sponsors.count > 0 %>
-          <% @effort.sponsors.each do |sponsor|  %>
-          <div id="sponsor" class="col m3 s-v">
-            <%= image_tag(sponsor.image) %>
-          </div>
+            <% if @effort.sponsors.count > 0 %>
+                <% @effort.sponsors.each do |sponsor|  %>
+                    <div id="sponsor" class="col m3 s-v">
+                      <%= image_tag(sponsor.image) %>
+                    </div>
+                <% end %>
             <% end %>
-          <% end %>
-          <div id="volunteer" class="col m3 s-v">
-             <%= image_tag(@effort.volunteer.image) if @effort.volunteer %>
-          </div>
+            <div id="volunteer" class="col m3 s-v">
+              <%= image_tag(@effort.volunteer.image) if @effort.volunteer %>
+            </div>
           </div>
         </div>
         <div class="row">
-        <span class="card-title">Effort Progress</span>
-          <h6>Start Date: <%= @effort.schedule.start_date %></h6>
-          <h6>Time Remaining: <%= @effort.schedule.time_remaining %> hours remaining</h6>
+          <span class="card-title">Effort Progress</span>
+          <% if @effort.schedule %>
+              <h6>Start Date: <%= @effort.schedule.start_date %></h6>
+              <h6>Time Remaining: <%= @effort.schedule.time_remaining %> hours remaining</h6>
+          <% else %>
+              <h6>Start Date: TBD</h6>
+              <h6>Time Remaining: TBD</h6>
+          <% end %>
           <span class="card-title">Rewards</span>
           <h6>Type: <%= @effort.member.name %> requested <%= @effort.requested_reward %></h6>
           <h6>Frequency: Once a day</h6>
@@ -52,9 +57,9 @@
   </div>
 </div>
 <% if @effort.schedule %>
-    <% if current_user == @effort.volunteer  %>
+    <% if current_user == @effort.volunteer && @effort.result == "Success"  %>
         <%= render partial: 'sponsor_schedule' %>
-    <% else %>
+    <% elsif @effort.schedule.vote_period %>
         <%= render partial: 'sponsor_vote' %>
     <% end %>
 <% end %>

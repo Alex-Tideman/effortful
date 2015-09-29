@@ -27,7 +27,7 @@
                   <%= image_tag(sponsor.image) %>
                   <span class="card-title"><%= sponsor.name %></span>
                 </div>
-                <p>Time Remaining to Vote: <%= @effort.vote_remaining %></p>
+                <p>Time Remaining to Vote: <%= @effort.schedule.time_remaining %> hours</p>
                 <% if sponsor == current_user %>
                     <div class="vote-buttons">
                       <button id="yes-vote" class="btn-floating btn-large waves-effect waves-light green" data-id=<%= @effort.vote.id%> >YES</button>
