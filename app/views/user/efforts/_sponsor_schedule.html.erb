@@ -18,7 +18,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <% @effort.schedule.donate_schedule do |day| %>
+                    <% @effort.schedule.donate_schedule.each do |day| %>
                         <tr>
                           <td><%= day.last.name %></td>
                           <td><%= day.last.location %></td>

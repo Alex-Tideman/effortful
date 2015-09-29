@@ -41,7 +41,6 @@ class Schedule < ActiveRecord::Base
       [day,shuffle_sponsors.pop]
     end
 
-    binding.pry
   end
 
   def random_sponsor

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     sponsor_count = @user.sponsor_count
+    w3w_location = what3words.words_to_position @user.w3w_split
   end
 
   def edit
