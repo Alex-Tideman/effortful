@@ -35,11 +35,13 @@ class Schedule < ActiveRecord::Base
 
   def donate_schedule
     week = donate_week
-    sponsors = effort.sponsors.shuffle
+    shuffle_sponsors = effort.sponsors.shuffle
 
     week.map do |day|
-      [day,sponsors.pop]
+      [day,shuffle_sponsors.pop]
     end
+
+    binding.pry
   end
 
   def random_sponsor
