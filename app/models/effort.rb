@@ -1,4 +1,6 @@
 class Effort < ActiveRecord::Base
+  include CacheInvalidator
+
   attr_reader :week, :start,:start_date,:time_remaining
   has_many :user_efforts
   has_many :users, through: :user_efforts

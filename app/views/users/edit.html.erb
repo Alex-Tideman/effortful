@@ -1,7 +1,1 @@
-<% if current_user.role == "Member" %>
-    <%= render partial: 'partials/edit_profile' %>
-<% elsif current_user.role == "Volunteer" %>
-    <%= render partial: 'partials/edit_profile' %>
-<% elsif current_user.role == "Sponsor" %>
-    <%= render partial: 'partials/edit_profile' %>
-<% end %>
+<%= render partial: 'partials/edit_profile' %>

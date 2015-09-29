@@ -1,15 +1,20 @@
-<div class="row">
-<% @efforts.each do |effort| %>
-      <div class="col s12 m2">
-        <div id="effort-index-card" class="card darken-3">
-          <div class="card-content">
-            <span class="card-title"><b><%= link_to effort.title, user_effort_path(user: effort.member, id: effort.id) %></b></span>
-            <p><%= effort.member.name %></p>
+<% cache(cache_key_for(Effort)) do %>
+    <div class="row">
+  <% @efforts.each do |effort| %>
+      <% cache(effort) do %>
+          <div class="col s12 m2">
+            <div id="effort-index-card" class="card darken-3">
+              <div class="card-content">
+                <span class="card-title"><b><%= link_to effort.title, user_effort_path(user: effort.member, id: effort.id) %></b></span>
+                <p><%= effort.member.name %></p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-<% end %>
+      <% end %>
+  <% end %>
 </div>
+<% end %>
+
 <!--<div id="map-container"><div id="effort-map"></div></div>-->
 <script>
     var effortMap;

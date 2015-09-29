@@ -51,7 +51,7 @@
         url:     "/votes/" + $(this).attr("data-id"),
         data:    vote_params,
         success: function(){
-          $("html").load("#voting-results" );
+          $("html").load("#voting-results");
           $(this.parent()).text("You voted Yes!");
         }
       })

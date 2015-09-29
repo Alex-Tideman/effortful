@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include CacheInvalidator
 
   has_many :user_efforts
   has_many :efforts, through: :user_efforts
