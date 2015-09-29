@@ -39,7 +39,7 @@ class User::EffortsController < ApplicationController
       @effort.schedule = Schedule.new
     elsif current_volunteer
       @effort.update(volunteer_id: current_user.id)
-      current_volunter.efforts << @effort
+      current_volunteer.efforts << @effort
     elsif current_sponsor
       current_sponsor.efforts << @effort
     end
