@@ -1,5 +1,5 @@
 class Effort < ActiveRecord::Base
-  attr_reader :effort_time, :day
+  attr_reader :week, :start,:start_date,:time_remaining
   has_many :user_efforts
   has_many :users, through: :user_efforts
   has_one :vote
@@ -20,8 +20,12 @@ class Effort < ActiveRecord::Base
     end.compact
   end
 
+  def start
+    Schedulizer.new(self,Time.now)
+  end
+
   def active
-    true if sponsors.count == 7 && volunteer
+    true if sponsors.count >= 7 && volunteer
   end
 
   def active_time

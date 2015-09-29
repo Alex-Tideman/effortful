@@ -42,10 +42,10 @@
                     </thead>
                     <tbody>
                     <tr>
-                      <td><%= @effort.random_sponsor.name %></td>
-                      <td><%= @effort.random_sponsor.location %></td>
+                      <td><%= @effort.start.random_sponsor.name %></td>
+                      <td><%= @effort.start.random_sponsor.location %></td>
                       <td><%= @effort.member.location %></td>
-                      <td><%= @effort.week[0].strftime('%a, %d %b %Y') %></td>
+                      <td><%= @effort.start.donate_week[0].strftime('%a, %d %b %Y') %></td>
                       <td>5:00 p.m.</td>
                     </tr>
                     </tbody>

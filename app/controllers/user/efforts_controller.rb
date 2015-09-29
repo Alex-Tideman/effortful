@@ -17,7 +17,6 @@ class User::EffortsController < ApplicationController
     @effort.update(member_id: current_user.id)
     if @effort.save
       @effort.vote = Vote.new
-      # @effort.update_attributes(ne_lat: params[:effort][:ne_lat],ne_lng: params[:effort][:ne_lng],sw_lat: params[:effort][:sw_lat],sw_lng: params[:effort][:sw_lng])
       current_user.efforts << @effort
       flash[:success] = "#{@effort.title} has been created!"
       redirect_to user_effort_path(id: @effort.id, user: current_user)
@@ -34,10 +33,13 @@ class User::EffortsController < ApplicationController
   def update
     @effort = Effort.find(params[:id])
 
-    if current_sponsor
-     current_user.efforts << @effort
+    if current_volunteer && @effort.sponsors.count == 7
+      @effort.update(volunteer_id: current_user.id)
+      @effort.start
     elsif current_volunteer
       @effort.update(volunteer_id: current_user.id)
+      current_user.efforts << @effort
+    elsif current_sponsor
       current_user.efforts << @effort
     end
 
