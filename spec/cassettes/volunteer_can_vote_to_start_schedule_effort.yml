@@ -1,0 +1,117 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://api.what3words.com/w3w
+    body:
+      encoding: US-ASCII
+      string: string=sound.misty.loads&key=QI4PBUVB
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '37'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Tue, 29 Sep 2015 21:40:37 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - PHP/5.4.44
+      Set-Cookie:
+      - id=ql575fkhgul0alu66u3chtcje2; expires=Wed, 30-Sep-2015 09:40:37 GMT; path=/;
+        HttpOnly
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Encoding:
+      - gzip
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAyWMwQqAIBAFfyX2bJKYhf1KdBAUEcyNVEKif2+j08C84d1Q
+        2uFgAdldeNoMDH4uK2SsyZLYQy6NGNHQsDE4MIcSMFEkNZ+lVEKzXgwj15MS
+        SlESTfLV+O/ZJXhe/QPh3mcAAAA=
+    http_version: 
+  recorded_at: Tue, 29 Sep 2015 21:40:36 GMT
+- request:
+    method: post
+    uri: http://api.what3words.com/w3w
+    body:
+      encoding: US-ASCII
+      string: string=adults.link.income&key=QI4PBUVB
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '38'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.8.0
+      Date:
+      - Tue, 29 Sep 2015 21:40:37 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - PHP/5.4.44
+      Set-Cookie:
+      - id=l2s0jj63f5nhhp3cjb73nj27i3; expires=Wed, 30-Sep-2015 09:40:37 GMT; path=/;
+        HttpOnly
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Encoding:
+      - gzip
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAyWM0QpAMBhGX0Xf9QiTNa8iF4ulZf5fTJK8uy1Xp06n8yDc
+        m0UHmV28TwcEfnY9zHT6kIx3tEQ4Gnm1GAQ2PlxwTLGSulBS163Iq7IptNKy
+        bmLhDc2nmdPZEt4PkUBG4WcAAAA=
+    http_version: 
+  recorded_at: Tue, 29 Sep 2015 21:40:37 GMT
+recorded_with: VCR 2.9.3

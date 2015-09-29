@@ -22,13 +22,4 @@ class Effort < ActiveRecord::Base
     end.compact
   end
 
-  def result
-    if vote.yes >= vote.no
-      "Success"
-    else
-      "Next time"
-    end
-  end
-
-
 end

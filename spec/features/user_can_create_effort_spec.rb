@@ -30,6 +30,7 @@ RSpec.describe "User can create effort", type: :feature do
     end
   end
 
+
   it 'user can view create show page' do
     VCR.use_cassette('user_can_create_effort_test#show_effort') do
       visit root_path

@@ -57,7 +57,7 @@
   </div>
 </div>
 <% if @effort.schedule %>
-    <% if (current_user == @effort.volunteer || @effort.sponsors.include?(current_user)) && @effort.result == "Success" && @effort.schedule.inactive %>
+    <% if (current_user == @effort.volunteer || @effort.sponsors.include?(current_user)) && @effort.vote.result == "Success" && @effort.schedule.inactive %>
         <%= render partial: 'sponsor_schedule' %>
     <% elsif @effort.sponsors.include?(current_user) && @effort.schedule.vote_period %>
         <%= render partial: 'sponsor_vote' %>

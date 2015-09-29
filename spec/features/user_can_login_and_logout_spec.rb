@@ -1,6 +1,6 @@
 require './spec/rails_helper'
 
-RSpec.describe "User can logout after logging in", type: :feature do
+RSpec.describe "User can login and logout after logging in", type: :feature do
 
 
   it 'user can view profile and edit profile' do

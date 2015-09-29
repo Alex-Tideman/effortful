@@ -10,11 +10,7 @@
             <div id="voting-results">
               <h6>Yes: <span id="yes-result"><%= @effort.vote.yes %></span></h6>
               <h6>No: <span id="no-result"><%= @effort.vote.no %></span></h6>
-              <% if @effort.vote.yes >= @effort.vote.no %>
-                  <h5>Result: Success!</h5>
-              <% else %>
-                  <h5>Result: Next time!</h5>
-              <% end %>
+                  <h5>Result: <%= @effort.vote.result %>!</h5>
             </div>
           </div>
         </div>

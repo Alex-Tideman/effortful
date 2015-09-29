@@ -54,6 +54,60 @@ RSpec.configure do |config|
                                                                        'credentials' => {:token =>user.token},
                                                                    })
   end
+
+  def get_sponsors
+    @user2 ||= User.create(name: "Alex Tideman",
+                        first_name: "B",
+                        last_name: "C",
+                        email: "0alex.tideman@gmail.com",
+                        image: "default.png",
+                        role: "Sponsor")
+    @user3 ||= User.create(name: "Alex Tideman",
+                        first_name: "D",
+                        last_name: "E",
+                        email: "1alex.tideman@gmail.com",
+                        image: "default.png",
+                        role: "Sponsor")
+    @user4 ||= User.create(name: "Alex Tideman",
+                        first_name: "F",
+                        last_name: "E",
+                        email: "2alex.tideman@gmail.com",
+                        image: "default.png",
+                        role: "Sponsor")
+    @user5 ||= User.create(name: "Alex Tideman",
+                        first_name: "G",
+                        last_name: "H",
+                        email: "3alex.tideman@gmail.com",
+                        image: "default.png",
+                        role: "Sponsor")
+    @user6 ||= User.create(name: "Alex Tideman",
+                        first_name: "I",
+                        last_name: "J",
+                        email: "4alex.tideman@gmail.com",
+                        image: "default.png",
+                        role: "Sponsor")
+    @user7 ||= User.create(name: "Alex Tideman",
+                        first_name: "K",
+                        last_name: "M",
+                        email: "5alex.tideman@gmail.com",
+                        image: "default.png",
+                        role: "Sponsor")
+    @user8 ||= User.create(name: "Alex Tideman",
+                        first_name: "N",
+                        last_name: "0",
+                        email: "6alex.tideman@gmail.com",
+                        image: "default.png",
+                        role: "Sponsor")
+
+    @user9 ||= User.create(name: "Alex Tideman",
+                           first_name: "P",
+                           last_name: "Q",
+                           email: "8alex.tideman@gmail.com",
+                           image: "default.png",
+                           role: "Volunteer")
+
+  end
+
 end
 
 
