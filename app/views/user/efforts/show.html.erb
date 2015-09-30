@@ -39,19 +39,28 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <span class="card-title">Effort Progress</span>
-          <% if @effort.schedule %>
-              <h6>Start Date: <%= @effort.schedule.start_date %></h6>
-              <h6>Time Remaining: <%= @effort.schedule.time_remaining %> hours remaining</h6>
-          <% else %>
-              <h6>Start Date: TBD</h6>
-              <h6>Time Remaining: TBD</h6>
-          <% end %>
-          <span class="card-title">Rewards</span>
-          <h6>Type: <%= @effort.member.name %> requested <%= @effort.requested_reward %></h6>
-          <h6>Frequency: Once a day</h6>
-        </div>
+      </div>
+    </div>
+    <div class="card white">
+      <div class="card-content">
+        <span class="card-title">Effort Progress</span>
+        <% if @effort.schedule.inactive %>
+            <h6>Start Date: <%= @effort.schedule.start_date %></h6>
+            <h6>Result: <%= @effort.vote.result %></h6>
+            <% elsif @effort.schedule %>
+            <h6>Start Date: <%= @effort.schedule.start_date %></h6>
+            <h6>Time Remaining: <%= @effort.schedule.time_remaining %> hours remaining</h6>
+        <% else %>
+            <h6>Start Date: TBD</h6>
+            <h6>Time Remaining: TBD</h6>
+        <% end %>
+      </div>
+    </div>
+    <div class="card white">
+      <div class="card-content">
+        <span class="card-title">Rewards</span>
+        <h6>Type: <%= @effort.member.name %> requested <%= @effort.requested_reward %></h6>
+        <h6>Frequency: Once a day</h6>
       </div>
     </div>
   </div>
