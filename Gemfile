@@ -20,9 +20,9 @@ gem 'underscore-rails'
 gem 'responders'
 gem 'redis-rails'
 gem 'skylight'
-gem 'sidekiq'
-gem 'sinatra'
-gem 'foreman'
+# gem 'sidekiq'
+# gem 'sinatra'
+# gem 'foreman'
 # gem 'twilio-ruby'
 
 group :development, :test do
