@@ -1,6 +1,8 @@
 class User::EffortsController < ApplicationController
   respond_to :json
 
+  before_action :authorize!
+
   def index
   end
 

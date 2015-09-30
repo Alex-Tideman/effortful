@@ -14,6 +14,8 @@ class VotesController < ApplicationController
     end
 
     user.votes << vote
+    flash[:success] = "You voted!"
+
 
   end
 

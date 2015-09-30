@@ -7,13 +7,14 @@ class SessionsController < ApplicationController
       user = User.find_or_create_from_auth(oauth_data)
       if user
         session[:user_id] = user.id
-        flash[:notice] = "Welcome back to Effortful,  #{user.name}!"
+        flash[:success] = "Welcome back to Effortful,  #{user.name}!"
         redirect_to profile_path
       end
     end
 
   def destroy
     session[:user_id] = nil
+    flash[:notice] = "Hope to see you soon!"
     redirect_to root_path
   end
 

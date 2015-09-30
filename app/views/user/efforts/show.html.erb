@@ -24,6 +24,7 @@
             <%= link_to "Add Sponsor", user_effort_path, :method => "put", id: "add-sponsor", class: "btn-floating btn-large waves-effect waves-light red" %>
         <% elsif current_volunteer && @effort.volunteer_id.nil? %>
             <%= link_to "Add Volunteer", user_effort_path, :method => "put", id: "add-sponsor", class: "btn-floating btn-large waves-effect waves-light red" %>
+        <% else %>
         <% end %>
         <div class="row">
           <div id="effort-sponsors" class="container">
