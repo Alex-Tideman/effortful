@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Effortful
   class Application < Rails::Application
+
+    config.active_job.queue_adapter = :sidekiq
+
     config.generators do |g|
       g.test_framework :rspec
     end
