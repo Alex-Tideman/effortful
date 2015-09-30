@@ -37,9 +37,13 @@ class User::EffortsController < ApplicationController
       @effort.update(volunteer_id: current_user.id)
       current_volunteer.efforts << @effort
       @effort.schedule = Schedule.new
+      # GenerateEffortEmailJob.set(wait: 1.hour).perform_later(@effort)
+      GenerateEffortEmailJob.perform_now(@effort)
     elsif current_sponsor && @effort.volunteer && @effort.sponsors.count == 6
       current_sponsor.efforts << @effort
       @effort.schedule = Schedule.new
+      # GenerateEffortEmailJob.set(wait: 1.hour).perform_later(@effort)
+      GenerateEffortEmailJob.perform_now(@effort)
     elsif current_volunteer
       @effort.update(volunteer_id: current_user.id)
       current_volunteer.efforts << @effort

@@ -1,0 +1,15 @@
+<h1>Your Effort routes</h1>
+
+<p>Hi <%= @effort.volunteer.first_name %>,</p>
+
+<p>
+  You get to deliver awesomeness! Here are your routes for member <%= @effort.member.first_name %>:
+</p>
+
+  <% @effort.schedule.donate_schedule.each do |day| %>
+
+  <p>Sponsor: <%= day.last.first_name %> on <%= day.first.strftime('%a, %d %b %Y') %></p>
+  <a href="https://www.google.com/maps/dir/<%= what3words.words_to_position(@effort.volunteer.w3w_split).first %>,<%= what3words.words_to_position(@effort.volunteer.w3w_split).last %>/<%= what3words.words_to_position(day.last.w3w_split).first %>,<%= what3words.words_to_position(day.last.w3w_split).last %>/<%= what3words.words_to_position(@effort.member.w3w_split).first %>,<%= what3words.words_to_position(@effort.member.w3w_split).last %>">Route</a>
+  <hr>
+  <% end %>
+
