@@ -10,9 +10,6 @@ RSpec.describe "User can login and logout after logging in", type: :feature do
       get_user
       click_link_or_button 'Login'
 
-      expect(current_path).to eq root_path
-      click_link_or_button 'Profile'
-
       expect(current_path).to eq profile_path
 
       expect(page).to have_content("Alex Tideman")
@@ -52,9 +49,6 @@ RSpec.describe "User can login and logout after logging in", type: :feature do
 
       get_user
       click_link_or_button 'Login'
-
-      expect(current_path).to eq root_path
-      click_link_or_button 'Profile'
 
       expect(current_path).to eq profile_path
 

@@ -65,13 +65,23 @@
           <thead>
           <tr>
             <th data-field="id">Active Efforts You Sponsor</th>
+            <button id="vote-link-button" class="btn-floating btn-large waves-effect waves-light green"></button> - You Voted
+            <button id="vote-link-button" class="btn-floating btn-large waves-effect waves-light red"></button> - Please Vote
           </tr>
           </thead>
           <tbody>
           <% current_user.efforts.uniq.each do |effort| %>
               <% if effort.schedule && effort.sponsors.include?(current_user) %>
                   <tr>
-                    <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %></td>
+                    <% if effort.schedule.time_remaining < 24 && current_user.votes.include?(effort.vote) %>
+                        <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><button id="vote-link-button" class="btn-floating btn-large waves-effect waves-light green"></button>
+                          <span class="badge"><span class="vote-hrs"><%= effort.schedule.time_remaining %></span> hrs left</span></td>
+                    <% elsif effort.schedule.time_remaining < 24 %>
+                        <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><button id="vote-link-button" class="btn-floating btn-large waves-effect waves-light red"></button>
+                          <span class="badge"><span class="vote-hrs"><%= effort.schedule.time_remaining %></span> hrs left</span></td>
+                    <% else %>
+                        <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><span class="badge"><span class="hrs"><%= effort.schedule.time_remaining %></span> hrs left</span></td>
+                    <% end %>
                   </tr>
               <% end %>
           <% end %>
@@ -81,3 +91,5 @@
     </div>
   </div>
 </div>
+
+

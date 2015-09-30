@@ -17,8 +17,6 @@ RSpec.describe "User can view all efforts after logging in", type: :feature do
       get_user
       click_link_or_button 'Login'
 
-      expect(current_path).to eq root_path
-      click_link_or_button 'Profile'
 
       expect(current_path).to eq profile_path
 
@@ -91,8 +89,6 @@ RSpec.describe "User can view all efforts after logging in", type: :feature do
       get_user
       click_link_or_button 'Login'
 
-      expect(current_path).to eq root_path
-      click_link_or_button 'Profile'
 
       expect(current_path).to eq profile_path
 
@@ -172,8 +168,6 @@ RSpec.describe "User can view all efforts after logging in", type: :feature do
       get_user
       click_link_or_button 'Login'
 
-      expect(current_path).to eq root_path
-      click_link_or_button 'Profile'
 
       expect(current_path).to eq profile_path
 
@@ -246,8 +240,6 @@ RSpec.describe "User can view all efforts after logging in", type: :feature do
       get_user
       click_link_or_button 'Login'
 
-      expect(current_path).to eq root_path
-      click_link_or_button 'Profile'
 
       expect(current_path).to eq profile_path
 
@@ -321,8 +313,6 @@ RSpec.describe "User can view all efforts after logging in", type: :feature do
       get_user
       click_link_or_button 'Login'
 
-      expect(current_path).to eq root_path
-      click_link_or_button 'Profile'
 
       expect(current_path).to eq profile_path
 

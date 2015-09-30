@@ -73,7 +73,11 @@
           <% current_user.efforts.uniq.each do |effort| %>
               <% if effort.schedule && effort.member == current_user %>
                   <tr>
-                    <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %></td>
+                    <% if effort.schedule.time_remaining > 24 %>
+                        <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><span class="badge"><span class="hrs"><%= effort.schedule.time_remaining %></span> hrs left</span></td>
+                    <% else %>
+                        <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><span class="badge"><span class="vote-hrs"><%= effort.schedule.time_remaining %></span> hrs left</span></td>
+                    <% end %>
                   </tr>
               <% end %>
           <% end %>
