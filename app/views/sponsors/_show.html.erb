@@ -65,26 +65,27 @@
           <thead>
           <tr>
             <th data-field="id">Active Efforts You Sponsor</th>
-            <button id="button-key" class="btn-floating btn-large waves-effect waves-light green"></button> - You Voted
-            <button id="button-key" class="btn-floating btn-large waves-effect waves-light red"></button> - Please Vote
+            <button id="button-key" class="btn-floating btn-large waves-effect waves-light green"></button> - YOU VOTED
+            <button id="button-key" class="btn-floating btn-large waves-effect waves-light red"></button> - PLEASE VOTE
           </tr>
           </thead>
           <tbody>
           <% current_user.efforts.uniq.each do |effort| %>
               <% if effort.schedule && effort.sponsors.include?(current_user) %>
                   <tr>
-                    <% if effort.schedule.time_remaining < 24 && current_user.votes.include?(effort.vote) %>
+                    <% if effort.schedule.inactive && effort.vote.result == "Success" %>
                         <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><button id="vote-result-button" class="btn-floating btn-large waves-effect waves-light green"></button>
-                          <span class="badge"><span class="vote-hrs"><%= effort.schedule.time_remaining %></span> hrs left</span></td>
-                    <% elsif effort.schedule.time_remaining < 24 %>
-                        <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><button id="vote-result-button" class="btn-floating btn-large waves-effect waves-light red"></button>
-                          <span class="badge"><span class="vote-hrs"><%= effort.schedule.time_remaining %></span> hrs left</span></td>
-                    <% elsif effort.schedule.inactive && effort.vote.result == "Success" %>
-                        <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><button id="vote-result-button" class="btn-floating btn-large waves-effect waves-light green"></button>
-                          <span class="badge">SUCCESS</span></td>
+                          <span class="badge">OVER</span></td>
                     <% elsif effort.schedule.inactive %>
                         <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><button id="vote-result-button" class="btn-floating btn-large waves-effect waves-light green"></button>
-                          <span class="badge">NEXT TIME</span></td>
+                          <span class="badge">OVER</span></td>
+                    <% elsif effort.schedule.time_remaining <= 24 && current_user.votes.include?(effort.vote) %>
+                        <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><button id="vote-result-button" class="btn-floating btn-large waves-effect waves-light green"></button>
+                          <span class="badge"><span class="vote-hrs"><%= effort.schedule.time_remaining %></span> hrs left</span></td>
+                    <% elsif effort.schedule.time_remaining <= 24 %>
+                        <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><button id="vote-result-button" class="btn-floating btn-large waves-effect waves-light red"></button>
+                          <span class="badge"><span class="vote-hrs"><%= effort.schedule.time_remaining %></span> hrs left</span></td>
+
                     <% else %>
                         <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><span class="badge"><span class="hrs"><%= effort.schedule.time_remaining %></span> hrs left</span></td>
                     <% end %>

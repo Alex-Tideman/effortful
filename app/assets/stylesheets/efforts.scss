@@ -35,16 +35,16 @@
   float: right;
 }
 
-.s-v img{
-  border-radius: 50%;
-}
-
 #sponsor img{
-  box-shadow: #e02032 2px 3px 5px;
+  border: 2px solid #e02032;
+  border-radius: 50%;
+
 }
 
 #volunteer img{
-  box-shadow: #7F0000 2px 3px 5px;
+  border: 2px solid #9ccc65;
+  border-radius: 50%;
+
 }
 
 #set-location {

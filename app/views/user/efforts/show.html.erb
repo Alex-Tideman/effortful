@@ -29,13 +29,13 @@
           <div id="effort-sponsors" class="container">
             <% if @effort.sponsors.count > 0 %>
                 <% @effort.sponsors.each do |sponsor|  %>
-                    <div id="sponsor" class="col m3 s-v">
-                      <%= image_tag(sponsor.image) %>
+                    <div class="col m3 s-v">
+                      <div id="sponsor"><%= image_tag(sponsor.image) %></div>
                     </div>
                 <% end %>
             <% end %>
-            <div id="volunteer" class="col m3 s-v">
-              <%= image_tag(@effort.volunteer.image) if @effort.volunteer %>
+            <div class="col m3 s-v">
+              <div id="volunteer" ><%= image_tag(@effort.volunteer.image) if @effort.volunteer %></div>
             </div>
           </div>
         </div>
@@ -44,13 +44,15 @@
     <div class="card white">
       <div class="card-content">
         <span class="card-title">Effort Progress</span>
-        <% if @effort.schedule.inactive %>
+        <% if @effort.schedule %>
+          <% if @effort.schedule.inactive %>
             <h6>Start Date: <%= @effort.schedule.start_date %></h6>
             <h6>Result: <%= @effort.vote.result %></h6>
-            <% elsif @effort.schedule %>
+            <% else %>
             <h6>Start Date: <%= @effort.schedule.start_date %></h6>
             <h6>Time Remaining: <%= @effort.schedule.time_remaining %> hours remaining</h6>
-        <% else %>
+            <% end %>
+      <% else %>
             <h6>Start Date: TBD</h6>
             <h6>Time Remaining: TBD</h6>
         <% end %>

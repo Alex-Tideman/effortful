@@ -65,8 +65,8 @@
           <thead>
           <tr>
             <th data-field="id">Active Efforts You Sponsor</th>
-            <button id="button-key" class="btn-floating btn-large waves-effect waves-light green"></button> - Success!
-            <button id="button-key" class="btn-floating btn-large waves-effect waves-light red"></button> - Next time
+            <button id="button-key" class="btn-floating btn-large waves-effect waves-light green"></button> - SUCCESS
+            <button id="button-key" class="btn-floating btn-large waves-effect waves-light red"></button> - NEXT TIME
           </tr>
           </thead>
           <tbody>
@@ -75,10 +75,10 @@
                   <tr>
                     <% if effort.schedule.inactive && effort.vote.result == "Success" %>
                         <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><button id="vote-result-button" class="btn-floating btn-large waves-effect waves-light green"></button>
-                          <span class="badge">DELIVERY</span></td>
+                          <span class="badge">OVER</span></td>
                     <% elsif effort.schedule.inactive %>
                         <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><button id="vote-result-button" class="btn-floating btn-large waves-effect waves-light green"></button>
-                          <span class="badge">NO DELIVERY</span></td>
+                          <span class="badge">OVER</span></td>
                     <% elsif effort.schedule.time_remaining < 24 && effort.vote.result == "Success" %>
                         <td><%= link_to effort.title, user_effort_path(id: effort.id, user: effort.member) %><button id="vote-result-button" class="btn-floating btn-large waves-effect waves-light green"></button>
                           <span class="badge"><span class="vote-hrs"><%= effort.schedule.time_remaining %></span> hrs left</span></td>
