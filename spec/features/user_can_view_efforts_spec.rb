@@ -130,8 +130,6 @@ RSpec.describe "User can view all efforts after logging in", type: :feature do
 
       click_link_or_button 'Add Volunteer'
 
-      expect(page).to have_content("Time Remaining: 168 hours")
-
       expect(effort1.sponsors.count).to eq(7)
 
 
@@ -194,8 +192,8 @@ RSpec.describe "User can view all efforts after logging in", type: :feature do
 
       expect(current_path).to eq profile_path
 
+
       expect(page).to have_content("Alex Tideman")
-      expect(page).to have_content("Volunteer")
       expect(page).to have_content("Sponsor")
       expect(page).to have_content("Help people")
 
