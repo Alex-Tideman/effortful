@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     sponsors_with_count = Hash.new{ |k,v| k[v] = 0 }
     self.efforts.each do |effort|
       effort.sponsors.each do |sponsor|
-        sponsors_with_count[sponsor] += 1
+        sponsors_with_count[sponsor] += 1 if sponsor
       end
     end
     sponsors_with_count
@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   def volunteer_count
     volunteers_with_count = Hash.new{ |k,v| k[v] = 0 }
     self.efforts.uniq.each do |effort|
-        volunteers_with_count[effort.volunteer] += 1
+        volunteers_with_count[effort.volunteer] += 1 if effort.volunteer
     end
     volunteers_with_count
   end
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   def member_count
     members_with_count = Hash.new{ |k,v| k[v] = 0 }
     self.efforts.uniq.each do |effort|
-      members_with_count[effort.member] += 1
+      members_with_count[effort.member] += 1 if effort.member
     end
     members_with_count
   end

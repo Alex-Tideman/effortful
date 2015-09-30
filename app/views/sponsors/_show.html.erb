@@ -1,22 +1,70 @@
 <div class="row">
-  <div class="col s12 m5">
+  <div class="col s12 m8">
     <div class="card light-blue darken-2 profile-card">
       <div id="member-title" class="card-content white-text">
-        <div class="card-title">
+        <div>
           <%= image_tag(@user.image) %>
-          <h4 class="card-title"><%= @user.name %></h4>
-          <h6><%= @user.role %></h6>
+          <span><h3><%= @user.name %></h3>
+          <h5 id="role-title"><%= @user.role %></h5></span>
+          <strong>My Hobbies:</strong> <%= @user.hobby %><br>
+          <strong>My Mission:</strong> <%= @user.mission %>
         </div>
       </div>
     </div>
+    <div id="s_list" class="col m6">
+      <h5>My Members</h5>
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <% @user.member_count.each do |member_pair| %>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">stars</i><%= member_pair.first.name %></div>
+              <div class="collapsible-body">
+                <div id="profile-card" class="card">
+                  <div class="card-content row">
+                    <div class="s12 l3 col">
+                      <%= image_tag(member_pair.first.image) %><div id="chip-color" class="chip"><%= member_pair.last %></div>
+                    </div>
+                    <div class="s12 l9 col">
+                      Mission: <label><%= image_tag(member_pair.first.mission) %></label><br>
+                      Hobbies: <label><%= image_tag(member_pair.first.hobby) %></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="v_list" class="col m6">
+      <h5>My Volunteers</h5>
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <% @user.volunteer_count.each do |volunteer_pair| %>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">shopping_basket</i><%= volunteer_pair.first.name %></div>
+              <div class="collapsible-body">
+                <div id="profile-card" class="card">
+                  <div class="card-content row">
+                    <div class="s12 l3 col">
+                      <%= image_tag(volunteer_pair.first.image) %><div id="chip-color" class="chip"><%= volunteer_pair.last %></div>
+                    </div>
+                    <div class="s12 l9 col">
+                      Mission: <label><%= image_tag(volunteer_pair.first.mission) %></label><br>
+                      Hobbies: <label><%= image_tag(volunteer_pair.first.hobby) %></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  <div class="col s12 m5">
-    <div id="my-efforts" class="card white profile-card">
+  <div class="col s12 m4">
+    <div id="my-efforts" class="card white">
       <div id="volunteer-efforts" class="card-content black-text">
         <table>
           <thead>
           <tr>
-            <th data-field="id">Active Effort's For You</th>
+            <th data-field="id">Active Efforts You Sponsor</th>
           </tr>
           </thead>
           <tbody>
@@ -30,68 +78,6 @@
           </tbody>
         </table>
       </div>
-    </div>
-  </div>
-  <div class="col s12 m1">
-    <div id="profile-stripe1" class="card">
-      <div class="card-content white-text">
-        <div class="card-title">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col s12 m1">
-    <div id="profile-stripe2" class="card">
-      <div class="card-content white-text">
-      </div>
-    </div>
-  </div>
-  <div class="col s12 m1">
-    <div id="profile-stripe3" class="card">
-      <div class="card-content white-text">
-        <div class="card-title">
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="member-efforts" class="card-action">
-    <%= render partial: 'partials/effort_card' %>
-  </div>
-</div>
-</div>
-<div class="col s12">
-  <div class="card light-blue darken-2">
-    <div class="card-content white-text">
-      <p><span class="card-title">My Mission: </span><%= @user.mission %></p>
-    </div>
-  </div>
-</div>
-<div class="col s12">
-  <div id="hobbies" class="card light-blue darken-2">
-    <div class="card-content white-text">
-      <p><span class="card-title">My Hobbies: </span><%= @user.hobby %></p>
-    </div>
-  </div>
-</div>
-<div class="col s12">
-  <div id="members" class="card light-blue darken-2">
-    <div class="card-content white-text">
-      <span class="card-title">My Members:</span>
-      <% @user.member_count.each do |member_pair| %>
-          <%= image_tag(member_pair.first.image) %>
-          <div class="chip"><%= member_pair.last %></div>
-      <% end %>
-    </div>
-  </div>
-</div>
-<div class="col s12">
-  <div id="volunteers" class="card light-blue darken-2">
-    <div class="card-content white-text">
-      <span class="card-title">My Volunteers:</span>
-      <% if @user.volunteer_count.count > 0 %>
-      <%= image_tag(@user.volunteer_count.first.first.image) %>
-          <div class="chip"><%= @user.volunteer_count.first.last %></div>
-          <% end %>
     </div>
   </div>
 </div>

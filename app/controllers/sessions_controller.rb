@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       if user
         session[:user_id] = user.id
         flash[:notice] = "Welcome back to Effortful,  #{user.name}!"
-        redirect_to root_path
+        redirect_to profile_path
       end
     end
 
