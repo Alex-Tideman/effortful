@@ -26,8 +26,14 @@
 
 #my-efforts {
   overflow: scroll;
-  height: 100%;
+  height: 500px;
 }
+
+#my-efforts a {
+  color:black;
+  text-decoration: underline;
+}
+
 
 #vote-result-button {
   width: 30px;
