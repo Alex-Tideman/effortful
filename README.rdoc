@@ -1,28 +1,5 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is called Effortful, which is a community improvement application for those in need. Members can create Efforts where they will do an activity or action that improves where they live. Other users can sponsor members and vote on their progress. If the Effort is a success, a volunteer will pick up a non-monetary reward from the sponsors and deliver it to the member using What3Words, which allows delivery without an address.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+This app using Google Omniauth, Google Maps/Directions/Javascript API and What3Words API. It's test suite uses Rspec.
