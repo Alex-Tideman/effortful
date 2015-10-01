@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
   def sponsor_count
     sponsors_with_count = Hash.new{ |k,v| k[v] = 0 }
-    self.efforts.each do |effort|
+    self.efforts.uniq.each do |effort|
       effort.sponsors.each do |sponsor|
         sponsors_with_count[sponsor] += 1 if sponsor
       end

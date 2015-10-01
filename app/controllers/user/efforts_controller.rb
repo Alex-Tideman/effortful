@@ -23,6 +23,7 @@ class User::EffortsController < ApplicationController
       flash[:success] = "#{@effort.title} has been created!"
       redirect_to user_effort_path(id: @effort.id, user: current_user)
     else
+      flash[:notice] = "Please select an Effort area"
       render :new
     end
 

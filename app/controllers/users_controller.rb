@@ -16,9 +16,6 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Your profile has been updated."
       redirect_to profile_path
-    else
-      flash[:error] = "There are some errors in your profile. Please fix."
-      render :edit
     end
   end
 
