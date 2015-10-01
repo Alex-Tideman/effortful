@@ -6,11 +6,15 @@
 <nav>
   <div class="nav-wrapper">
     <%= link_to "Effortful", root_path, class: "brand-logo" %>
+    <% if current_user %>
+        <ul class="left hide-on-med-and-down">
+          <li><%= link_to "Logout", logout_path %></li>
+        </ul>
+    <% end %>
     <!-- Modal Trigger -->
     <ul class="right hide-on-med-and-down">
       <% if current_user %>
           <li><%= current_user.name %></li>
-          <li><%= link_to "Logout", logout_path %></li>
           <li><a id="profile-button" class="dropdown-button" href="/#" data-activates="dropdown2"><i class="medium material-icons">settings</i></a></li>
           <li><a id="search-button" href="/efforts"><i class="medium material-icons">search</i></a></li>
       <% else %>

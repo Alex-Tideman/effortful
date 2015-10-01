@@ -1,6 +1,7 @@
 <div class="row">
   <% if @pending_efforts.count > 0 %>
-      <div class="col s4">
+      <div class="col s4 effort-index-col">
+        <h5>Efforts for Food</h5>
       <% @food_efforts.each do |effort| %>
           <div class="col m6">
             <div id="effort-index-card" class="card darken-3">
@@ -12,7 +13,8 @@
           </div>
       <% end %>
       </div>
-      <div class="col s4">
+      <div class="col s4 effort-index-col">
+        <h5>Efforts for Clothes</h5>
         <% @clothing_efforts.each do |effort| %>
             <div class="col m6">
               <div id="effort-index-card" class="card darken-3">
@@ -24,7 +26,8 @@
             </div>
         <% end %>
       </div>
-      <div class="col s4">
+      <div class="col s4 effort-index-col">
+        <h5>Efforts for Job Resources</h5>
         <% @job_efforts.each do |effort| %>
             <div class="col m6">
               <div id="effort-index-card" class="card darken-3">

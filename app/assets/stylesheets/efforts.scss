@@ -1,3 +1,12 @@
+.effort-index-col {
+  border-right: black solid 1px;
+  min-height:600px;
+}
+
+.effort-index-col h5{
+  text-align:center;
+}
+
 #effort-index-card a, a:visited, a:link {
   color: #9ccc65;
   font-size: 14px;
@@ -5,8 +14,7 @@
 
 #effort-index-card {
   height: 100px;
-  border: black solid 1px;
-  box-shadow: #9ccc65 5px 5px;
+  box-shadow: #9ccc65 1px 1px 10px;
 }
 
 #effort-index-card .card-title {
