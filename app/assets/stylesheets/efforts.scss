@@ -14,7 +14,13 @@
 
 #effort-index-card {
   height: 100px;
-  box-shadow: #9ccc65 1px 1px 10px;
+  box-shadow: #000000 1px 1px 10px;
+  overflow: scroll;
+}
+
+#effort-index-card img{
+  float:right;
+  width: 30px;
 }
 
 #effort-index-card .card-title {

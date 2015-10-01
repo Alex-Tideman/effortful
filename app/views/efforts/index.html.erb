@@ -6,6 +6,7 @@
           <div class="col m6">
             <div id="effort-index-card" class="card darken-3">
               <div class="card-content">
+                <%= image_tag(effort.member.image) %>
                 <span class="card-title"><b><%= link_to effort.title, user_effort_path(user: effort.member, id: effort.id) %></b></span>
                 <p><%= effort.member.name %></p>
               </div>
@@ -19,6 +20,7 @@
             <div class="col m6">
               <div id="effort-index-card" class="card darken-3">
                 <div class="card-content">
+                  <%= image_tag(effort.member.image) %>
                   <span class="card-title"><b><%= link_to effort.title, user_effort_path(user: effort.member, id: effort.id) %></b></span>
                   <p><%= effort.member.name %></p>
                 </div>
@@ -32,6 +34,7 @@
             <div class="col m6">
               <div id="effort-index-card" class="card darken-3">
                 <div class="card-content">
+                  <%= image_tag(effort.member.image) %>
                   <span class="card-title"><b><%= link_to effort.title, user_effort_path(user: effort.member, id: effort.id) %></b></span>
                   <p><%= effort.member.name %></p>
                 </div>
